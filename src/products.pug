@@ -1,0 +1,82 @@
+doctype html
+html(lang="ru")
+    head
+        include ./templates/head/head.pug
+    body
+        header
+            include ./templates/header/header.pug
+        main
+            .container.container_page
+                include ./templates/breadcrumb/breadcrumb.pug
+                h1.headline.headline_page Продукция
+                .content-with-left-aside
+                    aside.aside-nav.js--aside-nav
+                        button.btn.btn-block.btn-lg.btn-outline-primary.aside-nav__show-nav.js--aside-nav__show-nav 
+                            span Показать меню
+                            span Скрыть меню
+                        nav
+                            ul
+                                li
+                                    a(href="").btn.btn-gray.btn-lg.btn-block.btn-nav.active Каталог ЖБИ
+                                    ul.aside-subnav
+                                        li
+                                            a(href="").btn.aside-subnav__btn Раздел
+                                        li
+                                            a(href="").btn.aside-subnav__btn Раздел
+                                        li
+                                            a(href="").btn.aside-subnav__btn Раздел
+                                        li
+                                            a(href="").btn.aside-subnav__btn Раздел
+                                        li
+                                            a(href="").btn.aside-subnav__btn Раздел
+                                        li
+                                            a(href="").btn.aside-subnav__btn Раздел
+                                        li
+                                            a(href="").btn.aside-subnav__btn Раздел
+                                        li
+                                            a(href="").btn.aside-subnav__btn Раздел
+                                li
+                                    a(href="").btn.btn-gray.btn-lg.btn-block.btn-nav  Нефтяная и газовая промышленность
+                                li
+                                    a(href="").btn.btn-gray.btn-lg.btn-block.btn-nav  Промышленно-гражданское строительство
+                                li
+                                    a(href="").btn.btn-gray.btn-lg.btn-block.btn-nav  Строительство объектов энергетики и электрификации
+                                li
+                                    a(href="").btn.btn-gray.btn-lg.btn-block.btn-nav  Индивидуальная продукция
+                                li
+                                    a(href="").btn.btn-gray.btn-lg.btn-block.btn-nav  Газоблоки
+                    .content-with-left-aside__content
+                        ul.production-page-list
+                            li.image-card.production-page-list__image-card
+                                img(src="assets/img/production_01.png", alt="")
+                                h3.image-card__title.image-card__title_bottom Нефтяная и газовая промышленность
+                                span.image-card__detail Подробнее>
+                                a(href="").whole-block-link
+                            li.image-card.production-page-list__image-card
+                                img(src="assets/img/production_02.png", alt="")
+                                h3.image-card__title.image-card__title_bottom Газоблоки
+                                span.image-card__detail Подробнее>
+                                a(href="").whole-block-link
+                            li.image-card.production-page-list__image-card
+                                img(src="assets/img/production_03.png", alt="")
+                                h3.image-card__title.image-card__title_bottom Промышленное-гражданское строительство
+                                span.image-card__detail Подробнее>
+                                a(href="").whole-block-link
+                            li.image-card.production-page-list__image-card
+                                img(src="assets/img/production_04.png", alt="")
+                                h3.image-card__title.image-card__title_bottom Железнодорожное строительство
+                                span.image-card__detail Подробнее>
+                                a(href="").whole-block-link
+                            li.image-card.production-page-list__image-card
+                                img(src="assets/img/production_05.png", alt="")
+                                h3.image-card__title.image-card__title_bottom Строительство объектов энергетики и электрофикации
+                                span.image-card__detail Подробнее>
+                                a(href="").whole-block-link
+                            li.image-card.production-page-list__image-card
+                                img(src="assets/img/production_06.png", alt="")
+                                h3.image-card__title.image-card__title_bottom Индивидуальная продукция
+                                span.image-card__detail Подробнее>
+                                a(href="").whole-block-link
+            include ./templates/contacts/contacts.pug
+        footer
+            include ./templates/footer/footer.pug

@@ -1,0 +1,210 @@
+.typical-content {
+
+    h1 {
+        font-size: 2.25rem;
+        margin-bottom: 40px;
+        text-transform: uppercase;
+    }
+
+    h2 {
+        font-size: 2rem;
+        margin-bottom: 24px;
+    }
+
+    h3 {
+        font-size: 1.75rem;
+        margin-bottom: 24px;
+    }
+
+    h4 {
+        font-size: 1.5rem;
+        margin-bottom: 24px;
+    }
+
+    h5 {
+        font-size: 1.25rem;
+        margin-bottom: 24px;
+    }
+
+    h6 {
+        font-size: 1.15rem;
+        margin-bottom: 24px;
+    }
+
+    p {
+        font-size: 1rem;
+        margin-bottom: 24px;
+        font-weight: 400;
+        line-height: 24px;
+    }
+
+    img {
+        display: block;
+        margin-bottom: 24px;
+        width: 100%;
+    }
+
+    ul {
+        margin-bottom: 24px;
+
+        li {
+            font-size: 1rem;
+            margin-bottom: 4px;
+            font-weight: 400;
+            line-height: 24px;
+            padding-left: 32px;
+            position: relative;
+
+            &::before {
+                background-color: #bf272e;
+                content: "";
+                display: block;
+                height: 12px;
+                min-width: 12px;
+                left: 0;
+                position: absolute;
+                top: 6px;
+                width: 12px;
+            }
+        }
+    }
+
+    ol {
+        counter-reset: olCounter;
+        margin-bottom: 24px;
+
+        li {
+            font-size: 1rem;
+            margin-bottom: 4px;
+            font-weight: 400;
+            line-height: 24px;
+            list-style: none;
+            padding-left: 32px;
+            position: relative;
+
+            &::before {
+                background-color: #bf272e;
+                color: #FFF;
+                content: counter(olCounter);
+                counter-increment: olCounter;
+                display: inline-block;
+                font-size: 0.875rem;
+                font-weight: 900;
+                height: 23px;
+                line-height: 23px;
+                text-align: center;
+                min-width: 23px;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 23px;
+            }
+        }
+    }
+
+    @media (max-width: 992px) {
+        h1 {
+            font-size: 2rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+        }
+
+        h3 {
+            font-size: 1.6rem;
+        }
+
+        h4 {
+            font-size: 1.4rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        h1 {
+            text-align: center;
+        }
+    }
+
+    @media (max-width: 480px) {
+        h1 {
+            font-size: 1.75rem;
+        }
+
+        h2 {
+            font-size: 1.6rem;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+        }
+
+        h4 {
+            font-size: 1.2rem;
+        }
+
+        h5, h6 {
+            font-size: 1.1;
+        }
+    }
+
+    table {
+        font-weight: 400;
+        width: 100%;
+
+        tr {
+
+            th {
+                background-color: #28272d;
+                color: #FFF;
+                padding: 12px 4px;
+            }
+
+            td {
+                background-color: #f5f5f6;
+                text-align: center;
+                padding: 12px 4px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            min-width: 760px;
+        }
+    }
+
+    .table-wrapper {
+        margin-bottom: 24px;
+
+        @media (max-width: 768px) {
+            overflow-x: scroll;
+            width: calc(100% + 15px);
+        }
+    }
+
+    blockquote {
+        font-size: 1rem;
+        line-height: 24px;
+        font-style: italic;
+        font-weight: 400;
+        margin-bottom: 24px;
+        padding-left: 32px;
+        position: relative;
+
+        &::before {
+            color: #bf272e;
+            content: "„";
+            line-height: 0px;
+            font-family: sans-serif;
+            font-size: 40px;
+            font-style: normal;
+            font-weight: 900;
+            left: 0;
+            position: absolute;
+            top: 0;
+        }
+    }
+
+    video {
+        width: 100%;
+    }
+}

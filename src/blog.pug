@@ -1,0 +1,105 @@
+doctype html
+html(lang="ru")
+    head
+        include ./templates/head/head.pug
+    body
+        header
+            include ./templates/header/header.pug
+        main
+            .container.container_page
+                include ./templates/breadcrumb/breadcrumb.pug
+                h1.headline.headline_page Блог
+                .content-with-left-aside
+                    aside.aside-nav.js--aside-nav
+                        button.btn.btn-block.btn-lg.btn-outline-primary.aside-nav__show-nav.js--aside-nav__show-nav 
+                            span Показать меню
+                            span Скрыть меню
+                        nav
+                            span.aside-subnav-headline Разделы
+                            ul.aside-subnav
+                                li
+                                    a(href="").btn.aside-subnav__btn Раздел
+                                li
+                                    a(href="").btn.aside-subnav__btn Раздел
+                                li
+                                    a(href="").btn.aside-subnav__btn Раздел
+                                li
+                                    a(href="").btn.aside-subnav__btn Раздел
+                                li
+                                    a(href="").btn.aside-subnav__btn Раздел
+                                li
+                                    a(href="").btn.aside-subnav__btn Раздел
+                                li
+                                    a(href="").btn.aside-subnav__btn Раздел
+                                li
+                                    a(href="").btn.aside-subnav__btn Раздел
+                        ul.tags
+                            li.tags__item
+                                a(href="javascript:;") Тег #
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="8px" height="8px">
+                                        <path d="M7.330,6.518 L6.515,7.333 L3.998,4.815 L1.481,7.333 L0.667,6.518 L3.184,4.001 L0.667,1.484 L1.481,0.670 L3.998,3.187 L6.515,0.670 L7.330,1.484 L4.813,4.001 L7.330,6.518 Z"/>
+                                    </svg>
+                            li.tags__item
+                                a(href="javascript:;").active Тег #
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="8px" height="8px">
+                                        <path d="M7.330,6.518 L6.515,7.333 L3.998,4.815 L1.481,7.333 L0.667,6.518 L3.184,4.001 L0.667,1.484 L1.481,0.670 L3.998,3.187 L6.515,0.670 L7.330,1.484 L4.813,4.001 L7.330,6.518 Z"/>
+                                    </svg>
+                            li.tags__item
+                                a(href="javascript:;").active Длинный Тег #
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="8px" height="8px">
+                                        <path d="M7.330,6.518 L6.515,7.333 L3.998,4.815 L1.481,7.333 L0.667,6.518 L3.184,4.001 L0.667,1.484 L1.481,0.670 L3.998,3.187 L6.515,0.670 L7.330,1.484 L4.813,4.001 L7.330,6.518 Z"/>
+                                    </svg>
+                            li.tags__item
+                                a(href="javascript:;") Тег #
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="8px" height="8px">
+                                        <path d="M7.330,6.518 L6.515,7.333 L3.998,4.815 L1.481,7.333 L0.667,6.518 L3.184,4.001 L0.667,1.484 L1.481,0.670 L3.998,3.187 L6.515,0.670 L7.330,1.484 L4.813,4.001 L7.330,6.518 Z"/>
+                                    </svg>
+                            li.tags__item
+                                a(href="javascript:;") Тег #
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="8px" height="8px">
+                                        <path d="M7.330,6.518 L6.515,7.333 L3.998,4.815 L1.481,7.333 L0.667,6.518 L3.184,4.001 L0.667,1.484 L1.481,0.670 L3.998,3.187 L6.515,0.670 L7.330,1.484 L4.813,4.001 L7.330,6.518 Z"/>
+                                    </svg>
+                    .content-with-left-aside__content
+                        ul
+                            li.big-news-card
+                                span.big-news-card__section Раздел
+                                h3.big-news-card__title Железобетонные изделия в современном строительстве
+                                .big-news-card__img-wrapper
+                                    img(src="assets/img/typical-img.png", alt="")
+                                    span.big-news-card__tags #: 
+                                        a(href="#") "О строительстве"
+                                        a(href="#") "Газоблок"
+                                time(datetime="2020-10-08").big-news-card__date 8 октября / 2020
+                                .big-news-card__description
+                                    p В 2004 году ОАО «Пермтрансжелезобетон» начало работать под торговой маркой «Бетокам», а в 2005 году вошло в состав корпорации «Бетокам», которая была создана в том же году.
+                                    p 2004 году был начат монтаж линии для ввода российско-испанской линии «Тенсиланд» для производства пустотных плит 
+                                    a(href="").big-news-card__detail Читать далее
+                            li.big-news-card
+                                span.big-news-card__section Раздел
+                                h3.big-news-card__title Железобетонные изделия в современном строительстве
+                                .big-news-card__img-wrapper
+                                    img(src="assets/img/typical-img.png", alt="")
+                                    span.big-news-card__tags #: 
+                                        a(href="#") "О строительстве"
+                                        a(href="#") "Газоблок"
+                                time(datetime="2020-10-08").big-news-card__date 8 октября / 2020
+                                .big-news-card__description
+                                    p В 2004 году ОАО «Пермтрансжелезобетон» начало работать под торговой маркой «Бетокам», а в 2005 году вошло в состав корпорации «Бетокам», которая была создана в том же году.
+                                    p 2004 году был начат монтаж линии для ввода российско-испанской линии «Тенсиланд» для производства пустотных плит 
+                                    a(href="").big-news-card__detail Читать далее
+                            li.big-news-card
+                                span.big-news-card__section Раздел
+                                h3.big-news-card__title Железобетонные изделия в современном строительстве
+                                .big-news-card__img-wrapper
+                                    img(src="assets/img/typical-img.png", alt="")
+                                    span.big-news-card__tags #: 
+                                        a(href="#") "О строительстве"
+                                        a(href="#") "Газоблок"
+                                time(datetime="2020-10-08").big-news-card__date 8 октября / 2020
+                                .big-news-card__description
+                                    p В 2004 году ОАО «Пермтрансжелезобетон» начало работать под торговой маркой «Бетокам», а в 2005 году вошло в состав корпорации «Бетокам», которая была создана в том же году.
+                                    p 2004 году был начат монтаж линии для ввода российско-испанской линии «Тенсиланд» для производства пустотных плит 
+                                    a(href="").big-news-card__detail Читать далее
+            include ./templates/contacts/contacts.pug
+        footer
+            include ./templates/footer/footer.pug

@@ -1,0 +1,45 @@
+.partners-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.partners-list__item {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    width: 14.2857%;
+
+    img {
+        display: block;
+        filter: grayscale(1);
+        max-width: 100%;
+        transition: .2s all ease-in-out;
+    }
+
+    &:hover img {
+        filter: grayscale(0);
+    }
+
+    @media (max-width: 1200px) {
+        width: 16.6666%;
+    }
+
+    @media (max-width: 992px) {
+        width: 20%;
+    }
+
+    @media (max-width: 768px) {
+        width: 25%;
+    }
+
+    @media (max-width: 576px) {
+        width: 33.3333%;
+    }
+
+    @media (max-width: 480px) {
+        padding: 16px;
+        width: 50%;
+    }
+}
+

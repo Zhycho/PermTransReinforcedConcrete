@@ -1,0 +1,337 @@
+.news-list-wrapper {
+    position: relative;
+}
+
+.news-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -1.5px -12px;
+
+    .news-card {
+        margin: 0 1.5px 12px;
+        width: calc(33.3333% - 3px);
+    }
+
+    @media (max-width: 992px) {
+        .news-card {
+            width: calc(50% - 3px);
+        }
+    }
+
+    @media (max-width: 576px) {
+        .news-card {
+            width: 100%;
+        }
+    } 
+}
+
+.news-card {
+    position: relative;
+}
+
+.news-card__main {
+    background-color: #0d1224;
+    transition: .2s all ease-in-out;
+    position: relative;
+
+    img {
+        display: block;
+        height: 200px;
+        opacity: 0.4;
+        width: 100%;
+    }
+
+    &::after {
+        background-color: #bf272e;
+        content: "";
+        display: block;
+        height: 12px;
+        left: 0;
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        transition: .2s all ease-in-out;
+        width: 12px;
+    }
+}
+
+.news-card__title-wrapper {
+    left: 20px;
+    position: absolute;
+    top: 16px;
+}
+
+.news-card__title {
+    color: #FFF;
+    font-size: 0.825rem;
+    transition: .2s all ease-in-out;
+}
+
+.news-card__subtitle {
+    color: #FFF;
+    font-size: 0.75rem;
+    font-weight: 400;
+    transition: .2s all ease-in-out;
+}
+
+.news-card__tags {
+    background-color: #bf272e;
+    border-radius: 50px;
+    bottom: 16px;
+    color: #FFF;
+    display: block;
+    font-size: 0.6875rem;
+    font-weight: 400;
+    left: 20px;
+    padding: 4px 8px;
+    position: absolute;
+    max-width: calc(100% - 40px);
+
+    a {
+        color: #FFF;
+        font-size: 0.6875rem;
+        font-weight: 400;
+        transition: .2s all ease-in-out;
+
+        &:nth-of-type(n+2)::before {
+            content: "|";
+        }
+
+        &:hover {
+            color: #28272d;
+        }
+    }
+}
+
+.news-card__description {
+    background-color: #f6f6f6;
+    font-size: 0.6875rem;
+    font-weight: 400;
+    line-height: 18px;
+    padding: 20px 16px;
+}
+
+.news-card:hover {
+
+    .news-card__main  {
+        background-color: #c4c8d4;
+    }
+
+    .news-card__title, .news-card__subtitle {
+        color: #28272d;
+    }
+
+    .news-card__main::after {
+        opacity: 1;
+    }
+}
+
+.show-all-news {
+    left: 50%;
+    position: absolute;
+    top: 4px;
+    transform: translateX(-50%);
+
+    @media (max-width: 1200px) {
+        left: auto;
+        right: 15px;
+        transform: translateX(0);
+    }
+
+    @media (max-width: 768px) {
+        display: block;
+        margin: 0 auto 24px;
+        position: static;
+        width: fit-content;
+    }
+}
+
+.big-news-card {
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+    padding: 16px 24px;
+
+    @media (max-width: 768px) {
+        padding: 16px;
+    }
+}
+
+ul > .big-news-card {
+    margin-bottom: 28px;
+
+    &:last-of-type {
+        margin-bottom: 0;
+    }
+}
+
+.big-news-card__section {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 400;
+    margin-bottom: 4px;
+}
+
+.big-news-card__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+
+    @media (max-width: 768px) {
+        font-size: 1.25rem;
+        margin-bottom: 16px;
+    }
+
+    @media (max-width: 480px) {
+        font-size: 1rem;
+        margin-bottom: 12px;
+    }
+}
+
+.big-news-card__img-wrapper {
+    position: relative;
+
+    img {
+        display: block;
+        height: 425px;
+        object-fit: cover;
+        width: 100%;
+    }
+
+    @media (max-width: 1200px) {
+        img {
+            height: 350px;
+        }
+    }
+
+    @media (max-width: 992px) {
+        img {
+            height: 300px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        img {
+            height: 250px;
+        }
+    }
+
+    @media (max-width: 576px) {
+        img {
+            height: 200px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        img {
+            height: 150px;
+        }
+    }
+}
+
+.big-news-card__tags {
+    background-color: #bf272e;
+    border-radius: 50px;
+    color: #FFF;
+    display: block;
+    font-size: 0.6875rem;
+    font-weight: 400;
+    left: 20px;
+    padding: 4px 8px;
+    position: absolute;
+    transition: .2s all ease-in-out;
+    top: 16px;
+    max-width: calc(100% - 40px);
+
+    a {
+        color: #FFF;
+        font-size: 0.6875rem;
+        font-weight: 400;
+
+        &:nth-of-type(n + 2)::before {
+            content: "|";
+        }
+
+        &:hover {
+            color: #28272d;
+
+            &::before {
+                color: #FFF;
+            }
+        }
+    }
+}
+
+.big-news-card__date {
+    background-color: #e6e7e9;
+    display: block;
+    font-size: 0.6875rem;
+    font-weight: 400;
+    height: 32px;
+    line-height: 32px;
+    padding: 0 16px;
+    text-align: end;
+    text-transform: uppercase;
+}
+
+.big-news-card__description {
+    padding-top: 16px;
+
+    p {
+        line-height: 24px;
+        font-size: 0.875rem;
+        font-weight: 400;
+    }
+}
+
+.big-news-card__detail {
+    display: block;
+    font-size: 0.6875rem;
+    font-weight: 400;
+    line-height: 42px;
+    margin: 12px 0 0 auto;
+    padding: 0 12px;
+    position: relative;
+    text-transform: uppercase;
+    white-space: nowrap;
+    width: fit-content;
+
+    &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 75%;
+        height: 42px;
+        background: transparent;
+        border: 2px solid #bf272e;
+        z-index: -1;
+        transition: 0.2s ease-in-out all;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        background: #fff;
+        height: 24px;
+        width: 80%;
+        z-index: -1;
+        transition: 0.2s ease-in-out all;
+    }
+
+    &:hover {
+        color: #FFFF;
+
+        &::before {
+            width: 100%;
+            background: #bf272e;
+        }
+
+        &::after {
+            background-color: #bf272e;
+            opacity: 0;
+        }
+    }
+}

@@ -1,0 +1,72 @@
+.point-with-icon {
+    align-items: center;
+    display: flex;
+    padding-right: 24px;
+    
+    span {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+    }
+}
+
+.ponit-with-icon__icon {
+    align-items: center;
+    background-color: #bf272e;
+    display: flex;
+    height: 52px;
+    justify-content: center;
+    margin-right: 32px;
+    min-width: 52px;
+    position: relative;
+    width: 52px;
+}
+
+.ponit-with-icon__icon::after {
+    border-bottom: 8px solid #bf272e;
+    border-left: 8px solid #bf272e;
+    border-right: 8px solid transparent;
+    border-top: 8px solid transparent;
+    bottom: 10px;
+    content: "";
+    height: 0;
+    left: 100%;
+    position: absolute;
+}
+
+.company-advantages-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: -12px;
+    padding: 60px 0;
+
+    .point-with-icon {
+        margin-bottom: 12px;
+        width: 20%;
+    }
+
+    @media (max-width: 1200px) {
+        .point-with-icon {
+            width: 25%;
+        }
+    }
+
+    @media (max-width: 992px) {
+        .point-with-icon {
+            width: 33.3333%;
+        }
+    }
+
+    @media (max-width: 768px) {
+        padding: 32px 0;
+
+        .point-with-icon {
+            width: 50%;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .point-with-icon {
+            width: 100%;
+        }
+    } 
+}

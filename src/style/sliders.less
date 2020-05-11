@@ -1,0 +1,43 @@
+.slick-slide:focus {
+    outline: none;
+}
+
+.slider-bottom-nav {
+    position: relative;
+
+    .slick-dots {
+        align-items: center;
+        background-color: rgba(59, 59, 59, 0.8);
+        bottom: 0;
+        display: flex;
+        justify-content: center;
+        left: 0;
+        height: 52px;
+        position: absolute;
+        width: 100%;
+
+        li {
+
+            button {
+                background-color: transparent;
+                border: none;
+                color: #FFF;
+                font-size: 1rem;
+                font-weight: 700;
+                height: 24px;
+                transition: .2s all ease-in-out;
+                width: 24px;
+
+                &:hover {
+                    color: #bf272e;
+                }
+            }
+        }
+    }
+
+    @media (max-width: 768px) {
+        .slick-dots {
+            height: 40px;
+        }
+    }
+}
