@@ -1,0 +1,53 @@
+doctype html
+html(lang="ru")
+    head
+        include ./templates/head/head.pug
+    body
+        header
+            include ./templates/header/header.pug
+        main
+            .container.container_page
+                include ./templates/breadcrumb/breadcrumb.pug
+                h1.headline.headline_page Акции
+                ul.stocks-filter
+                    li
+                        a(href="javascript:;").btn.btn-gray Архивные
+                    li
+                        a(href="javascript:;").btn.btn-gray.active Действующие
+                ul.stocks-list
+                    li.big-card
+                        .big-card__top-line
+                            span Начало акции
+                                time(datetime="2020-03-18") [дд.мм.гггг]
+                            span Окончание акции
+                                time(datetime="2020-05-18") [дд.мм.гггг]
+                        img(src="assets/img/stock_01.png", alt="")
+                        .big-card__description-block
+                            h3.big-card__headline Один за всех!
+                            span.big-card__description Получи подробный проект купив все необходимые для его строительства!
+                            a(href="stock.html").btn.btn-primary Подробнее
+                    li.big-card
+                        .big-card__top-line
+                            span Начало акции
+                                time(datetime="2020-03-18") [дд.мм.гггг]
+                            span Окончание акции
+                                time(datetime="2020-05-18") [дд.мм.гггг]
+                        img(src="assets/img/stock_01.png", alt="")
+                        .big-card__description-block
+                            h3.big-card__headline Один за всех!
+                            span.big-card__description Получи подробный проект купив все необходимые для его строительства!
+                            a(href="stock.html").btn.btn-primary Подробнее
+                    li.big-card
+                        .big-card__top-line
+                            span Начало акции
+                                time(datetime="2020-03-18") [дд.мм.гггг]
+                            span Окончание акции
+                                time(datetime="2020-05-18") [дд.мм.гггг]
+                        img(src="assets/img/stock_01.png", alt="")
+                        .big-card__description-block
+                            h3.big-card__headline Один за всех!
+                            span.big-card__description Получи подробный проект купив все необходимые для его строительства!
+                            a(href="stock.html").btn.btn-primary Подробнее
+            include ./templates/contacts/contacts.pug
+        footer
+            include ./templates/footer/footer.pug

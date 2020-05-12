@@ -6,6 +6,12 @@
     &.container_page {
         margin-bottom: 80px;
     }
+
+    @media (max-width: 768px) {
+        &.container_page {
+            margin-bottom: 40px;
+        }
+    }
 }
 
 .block {
@@ -62,11 +68,19 @@
 
     @media (max-width: 480px) {
         font-size: 1.75rem;
+        word-break: break-word;
 
         &.headline_block {
             margin-bottom: 40px;
         }
     }
+}
+
+.subheadline {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 36px;
+    text-transform: uppercase;
 }
 
 .whole-block-link {
@@ -86,6 +100,10 @@
     line-height: 36px;
     padding: 0 28px;
     text-transform: uppercase;
+}
+
+.btn-block+.btn-block {
+    margin-top: 0;
 }
 
 .btn-lg {
@@ -304,3 +322,209 @@
     }
 }
 
+.main-img-of-page {
+    margin-bottom: 16px;
+
+    img {
+        display: block;
+        height: 340px;
+        object-fit: cover;
+        width: 100%;
+    }
+
+    @media (max-width: 768px) {
+        img {
+            height: 280px;
+        }
+    }
+
+    @media (max-width: 576px) {
+        img {
+            height: 240px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        img {
+            height: 200px;
+        }
+    }
+}
+
+.filter {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -6px 18px;
+}
+
+.filter__item {
+    margin: 0 6px 10px;
+    width: calc(33.3333% - 12px);
+
+    a {
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+        font-weight: 400;
+
+        &:hover {
+            background-color: #bf272e;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+            color: #FFF;
+        }
+
+        &.active {
+            background-color: #bf272e;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+            color: #FFF;
+
+            &:hover {
+                background-color: #FFF;
+                box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+                color: #28272d;
+            }
+        }
+    }
+
+    @media (max-width: 1200px) {
+        width: calc(50% - 12px);
+    }
+
+    @media (max-width: 480px) {
+        width: calc(100% - 12px);
+    }
+}
+
+.stocks-filter {
+    border-bottom: 1px solid #e8e8e8;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+
+    li {
+        margin-right: 8px;
+
+        a {
+            min-width: 160px;
+           
+            &.active {
+                background-color: #bf272e;
+            }
+        }
+    }
+
+    @media (max-width: 768px) {
+        margin-bottom: 12px;
+        padding-bottom: 12px;
+    }
+
+    @media (max-width: 480px) {
+        margin: 0 -4px 12px;
+
+        li {
+            margin: 0 4px;
+            width: calc(50% - 8px);
+
+            a {
+                min-width: auto;
+                padding: 0 16px;
+                width: 100%;
+            }
+        }
+    }
+}
+
+// payment page
+
+.payment-content {
+    
+    p {
+        font-size: 0.875rem;
+        font-weight: 400;
+        line-height: 24px;
+        margin-bottom: 32px;
+    }
+
+    @media (max-width: 768px) {
+        p {
+            margin-bottom: 20px;
+        }
+    }
+}
+
+.list-with-check-mark {
+    margin-bottom: 32px;
+    
+    li {
+        font-size: 0.875rem;
+        font-weight: 400;
+        line-height: 24px;
+        padding-left: 37px;
+        position: relative;
+
+        &::before {
+            background-color: transparent;
+            border-bottom: 2px solid #bf272e;
+            border-radius: 2px;
+            border-right: 2px solid #bf272e;
+            content: "";
+            height: 11px;
+            left: 4px;
+            position: absolute;
+            transform: rotate(45deg);
+            transition: all 0.2s ease-in-out;
+            top: 5px;
+            width: 6px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        margin-bottom: 20px;
+    }
+}
+
+.payments-list {
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 32px;
+    padding-top: 32px;
+
+    li {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 32px;
+        padding: 0 20px;
+        width: 25%;
+
+        img {
+            filter: grayscale(1);
+            max-width: 100%;
+            transition: all 0.2s ease-in-out;
+        }
+
+        &:hover {
+            
+            img {
+                filter: grayscale(0);
+            }
+        }
+    }
+
+    @media (max-width: 768px) {
+        margin-bottom: 20px;
+        padding-top: 20px;
+
+        li {
+            margin-bottom: 20px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        flex-wrap: wrap;
+
+        li {
+            width: 50%;
+        }
+    } 
+}

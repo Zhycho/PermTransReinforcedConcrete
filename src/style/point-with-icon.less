@@ -6,6 +6,18 @@
     span {
         font-size: 0.75rem;
         text-transform: uppercase;
+        word-break: break-word;
+    }
+
+    &.point-with-icon_bold {
+
+        span {
+            font-size: 1rem;
+        }
+    }
+
+    &.point-with-icon_lonely {
+        margin-bottom: 32px;
     }
 }
 
@@ -70,3 +82,36 @@
         }
     } 
 }
+
+.gasblocks-advantages-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: -12px;
+    padding-bottom: 40px;
+
+    .point-with-icon {
+        margin-bottom: 12px;
+        width: 25%;
+    }
+
+    @media (max-width: 1200px) {
+        .point-with-icon {
+            width: 33.333%;
+        }
+    }
+
+    @media (max-width: 992px) {
+        .point-with-icon {
+            width: 50%;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .point-with-icon {
+            width: 100%;
+        }
+    }
+}
+
+
+

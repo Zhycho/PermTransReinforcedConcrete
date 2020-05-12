@@ -39,6 +39,17 @@
         }
     }
 
+    &.aside-nav_small {
+
+        nav {
+            box-shadow: none;
+
+            .btn {
+                font-weight: 400;
+            }
+        }
+    }
+
     @media (max-width: 992px) {
         min-width: 250px;
         width: 250px;
@@ -50,6 +61,13 @@
 
         nav {
             display: none;
+        }
+
+        &.aside-nav_small {
+
+            nav {
+                display: block;
+            }
         }
     }
 }

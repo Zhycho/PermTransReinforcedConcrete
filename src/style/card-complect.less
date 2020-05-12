@@ -1,0 +1,128 @@
+.card-complect {
+    position: relative;
+}
+
+.card-complect__headline {
+    background-color: #e6e7e9;
+    display: block;
+    font-size: 0.75rem;
+    min-height: 40px;
+    padding: 12px 10px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: .2s all ease-in-out;
+}
+
+.card-complect__img-wrapper {
+    overflow: hidden;
+
+    img {
+        display: block;
+        height: 320px;
+        object-fit: cover;
+        transition: .2s all ease-in-out;
+        width: 100%;
+    }
+
+    @media (max-width: 768px) {
+        img {
+            height: 260px;
+        }
+    }
+}
+
+.card-complect__price {
+    align-items: center;
+    background-color: #e6e7e9;
+    display: flex;
+    justify-content: space-between;
+    min-height: 40px;
+    padding: 8px 10px;
+
+    span:nth-of-type(1) {
+        font-size: 0.75rem;
+        font-weight: 400;
+    }
+
+    span:nth-of-type(2) {
+        font-size: 0.875rem;
+        padding-left: 20px;
+        white-space: nowrap;
+    
+        strong {
+            font-size: 1.25rem;
+        }
+    }
+}
+
+.card-complect__project-price {
+    display: block;
+    color: #FFF;
+    font-size: 1rem;
+    min-height: 36px;
+    padding: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: #737373;
+    font-weight: 400;
+    padding: 8px 10px;
+
+    @media (max-width: 480px) {
+        font-size: 0.875rem;
+    }
+}
+
+.card-complcet__detail {
+    background-color: #919191;
+    color: #FFF;
+    display: block;
+    font-size: 0.75rem;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: .2s all ease-in-out;
+}
+
+.card-complect:hover {
+
+    .card-complect__headline {
+        background-color: #bf272e;
+        color: #FFF;
+    }
+
+    .card-complcet__detail {
+        background-color: #bf272e;
+    }
+
+    .card-complect__img-wrapper {
+
+        img {
+            transform: scale(1.1);
+        }
+    }
+}
+
+.gasblocks-complects-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -10px -20px;
+
+    .card-complect {
+        margin: 0 10px 20px;
+        width: calc(50% - 20px);
+    }
+
+    @media (max-width: 1200px) {
+        .card-complect  {
+            width: calc(100% - 20px);
+        }
+    }
+
+    @media (max-width: 768px) {
+
+        .card-complect  {
+            width: calc(100% - 20px);
+        }
+    }
+}
