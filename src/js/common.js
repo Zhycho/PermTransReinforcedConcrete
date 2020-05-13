@@ -8,6 +8,16 @@ $(document).ready(function() {
         slidesToScroll: 1
     });
 
+    // Слайдер продуктов в публикации
+    $('.js--products-from-publication').slick({
+        infinite: false,
+        slidesToShow: 4,
+        prevArrow: $('.js--products-from-publication__prev'),
+        nextArrow: $('.js--products-from-publication__next'),
+        dots: false,
+        slidesToScroll: 1
+    });
+
 
     // Поиск в хедере
     $('.js--header-search').on('click', function(){

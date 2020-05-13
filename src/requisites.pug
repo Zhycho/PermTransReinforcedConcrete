@@ -1,0 +1,45 @@
+doctype html
+html(lang="ru")
+    head
+        include ./templates/head/head.pug
+    body
+        header
+            include ./templates/header/header.pug
+        main
+            .container.container_page
+                include ./templates/breadcrumb/breadcrumb.pug
+                .content-with-left-aside
+                    aside.aside-nav.aside-nav_small
+                        nav
+                            ul
+                                li
+                                    a(href="payment.html").btn.btn-gray.btn-lg.btn-block.btn-nav Оплата
+                                li
+                                    a(href="delivery.html").btn.btn-gray.btn-lg.btn-block.btn-nav Доставка
+                                li
+                                    a(href="certificates.html").btn.btn-gray.btn-lg.btn-block.btn-nav Сертификаты
+                                li
+                                    a(href="requisites.html").btn.btn-gray.btn-lg.btn-block.btn-nav.active Реквизиты
+                    .content-with-left-aside__content
+                        h1.headline.headline_page Реквизиты
+                        address.requisites
+                            h2.requisites__headline Акционерное Общество «Пермтрансжелезобетон»
+                            ul.requisites__list
+                                li ИНН: 5916000030
+                                li КПП: 591601001
+                                li Юридический адрес: РФ, Пермский край, Краснокамский район, пос. Оверята
+                                li Фактический адрес: РФ, Пермский край, Краснокамский район, пос. Оверята, ул. Комсомольская, д. 2
+                                li Почтовый адрес: 617050 РФ, Пермский край, Краснокамский район, пос. Оверята, ул. Комсомольская, д. 2
+                                li Банк: Филиал Приволжский ПАО Банк «ФК Открытие»
+                                li Р/с: 40702810802700000907
+                                li К/с: 30101810300000000881
+                                li БИК: 042282881
+                                li Тел.: +7 (34273) 90-607, +7 (342) 259-78-01
+                                li E-Mail: info@ptgb.ru
+                        a(href="#" download).btn.btn-primary.btn-lg.requisites__download Скачать реквизиты
+
+                        
+                                
+            include ./templates/contacts/contacts.pug
+        footer
+            include ./templates/footer/footer.pug

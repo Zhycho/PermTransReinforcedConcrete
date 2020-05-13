@@ -88,6 +88,61 @@
     }
 }
 
+.card__to-busket {
+    align-items: flex-end;
+    bottom: 10px;
+    display: flex;
+    left: 10px;
+    position: absolute;
+    width: calc(100% - 20px);
+    z-index: 1;
+    
+    & > div {
+        width: 50%;
+
+        &:nth-of-type(1) {
+            
+            & > span {
+                display: inline-block;
+                font-size: 0.75rem;
+                font-weight: 400;
+                margin-bottom: 8px;
+            }
+
+            .counter {
+                border: 1px solid #e3e3e3;
+                border-right: none;
+                height: 38px;
+            }
+        }
+    }
+}
+
+.card__to-busket__submit {
+    background-color: #919191;
+    border: none;
+    color: #FFF;
+    cursor: pointer;
+    font-size: 0.75rem;
+    font-weight: 700;
+    height: 38px;
+    text-transform: uppercase;
+    transition: .2s all ease-in-out;
+    width: 100%;
+
+    &:hover {
+        background-color: #bf272e;
+    }
+}
+
+.card.card_to-busket {
+    padding-bottom: 70px;
+
+    .card__description {
+        padding-bottom: 4px;
+    }
+}
+
 .catalog {
     display: flex;
     flex-wrap: wrap;
