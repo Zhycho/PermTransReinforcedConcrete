@@ -43,7 +43,9 @@
 }
 
 .slider-with-top-nav {
-
+    @media (max-width: 480px) {
+        position: relative;
+    }
 }
 
 .slider-with-top-nav__head {
@@ -52,6 +54,10 @@
     justify-content: space-between;
     margin-bottom: 12px;
     padding: 10px;
+
+    @media (max-width: 480px) {
+        justify-content: center;
+    }
 }
 
 .slider-with-top-nav__head-title {
@@ -78,6 +84,29 @@
         &:hover {
             background-color: #FFF;
             fill: #bf272e;
+        }
+    }
+
+    @media (max-width: 768px) {
+        margin: 0;
+
+        a {
+            border: 1px solid #bf272e;
+            height: 39px;
+            margin: 0;
+            position: absolute;
+            width: 39px;
+            z-index: 2;
+
+            &:nth-of-type(1) {
+                left: 0;
+                top: 50%;
+            }
+
+            &:nth-of-type(2) {
+                right: 0;
+                top: 50%;
+            }
         }
     }
 }
