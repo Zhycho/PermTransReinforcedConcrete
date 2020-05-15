@@ -42,11 +42,47 @@ $(document).ready(function() {
     $('.js--individual-product-slider').slick({
         infinite: false,
         slidesToShow: 1,
-        arrows: false,
         dots: false,
         slidesToScroll: 1,
-        prevArrow: $('.js--individual-product-slider__prev'),
-        nextArrow: $('.js--individual-product-slider__next'),
+        prevArrow: $('.js--product-slider__prev'),
+        nextArrow: $('.js--product-slider__next'),
+    });
+
+    // Слайдер в продукте
+    $('.js--product-sliders__project').slick({
+        infinite: false,
+        slidesToShow: 1,
+        dots: false,
+        slidesToScroll: 1,
+        arrows: false,
+        swipe: false,
+        speed: 700,
+        fade: true,
+        prevArrow: $('.js--product-slider__prev'),
+        nextArrow: $('.js--product-slider__next'),
+        asNavFor: '.js--product-sliders__nav',
+    });
+    $('.js--product-sliders__nav').slick({
+        infinite: false,
+        slidesToShow: 5,
+        dots: false,
+        slidesToScroll: 1,
+        vertical: true,
+        arrows: false,
+        focusOnSelect: true,
+        asNavFor: '.js--product-sliders__project',
+        responsive: [
+          {
+            breakpoint: 993,
+            settings: {
+              slidesToShow: 3
+            }
+          },
+          {
+            breakpoint: 769,
+            settings: 'unslick'
+          },
+        ]
     });
 
 
@@ -60,6 +96,8 @@ $(document).ready(function() {
         $('.js--aside-nav').toggleClass('active');
     });
 
+    // Инициализация тултипов в продукте
+    tippy('[data-tippy-content]');
 
 
 });

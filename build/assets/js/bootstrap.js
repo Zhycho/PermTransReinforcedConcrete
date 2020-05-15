@@ -1,11 +1,212 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.4.1): alert.js
+ * Bootstrap (v4.4.1): util.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
 
 import $ from 'jquery'
+
+/**
+ * ------------------------------------------------------------------------
+ * Private TransitionEnd Helpers
+ * ------------------------------------------------------------------------
+ */
+
+const TRANSITION_END = 'transitionend'
+const MAX_UID = 1000000
+const MILLISECONDS_MULTIPLIER = 1000
+
+// Shoutout AngusCroll (https://goo.gl/pxwQGp)
+function toType(obj) {
+  return {}.toString.call(obj).match(/\s([a-z]+)/i)[1].toLowerCase()
+}
+
+function getSpecialTransitionEndEvent() {
+  return {
+    bindType: TRANSITION_END,
+    delegateType: TRANSITION_END,
+    handle(event) {
+      if ($(event.target).is(this)) {
+        return event.handleObj.handler.apply(this, arguments) // eslint-disable-line prefer-rest-params
+      }
+      return undefined // eslint-disable-line no-undefined
+    }
+  }
+}
+
+function transitionEndEmulator(duration) {
+  let called = false
+
+  $(this).one(Util.TRANSITION_END, () => {
+    called = true
+  })
+
+  setTimeout(() => {
+    if (!called) {
+      Util.triggerTransitionEnd(this)
+    }
+  }, duration)
+
+  return this
+}
+
+function setTransitionEndSupport() {
+  $.fn.emulateTransitionEnd = transitionEndEmulator
+  $.event.special[Util.TRANSITION_END] = getSpecialTransitionEndEvent()
+}
+
+/**
+ * --------------------------------------------------------------------------
+ * Public Util Api
+ * --------------------------------------------------------------------------
+ */
+
+const Util = {
+
+  TRANSITION_END: 'bsTransitionEnd',
+
+  getUID(prefix) {
+    do {
+      // eslint-disable-next-line no-bitwise
+      prefix += ~~(Math.random() * MAX_UID) // "~~" acts like a faster Math.floor() here
+    } while (document.getElementById(prefix))
+    return prefix
+  },
+
+  getSelectorFromElement(element) {
+    let selector = element.getAttribute('data-target')
+
+    if (!selector || selector === '#') {
+      const hrefAttr = element.getAttribute('href')
+      selector = hrefAttr && hrefAttr !== '#' ? hrefAttr.trim() : ''
+    }
+
+    try {
+      return document.querySelector(selector) ? selector : null
+    } catch (err) {
+      return null
+    }
+  },
+
+  getTransitionDurationFromElement(element) {
+    if (!element) {
+      return 0
+    }
+
+    // Get transition-duration of the element
+    let transitionDuration = $(element).css('transition-duration')
+    let transitionDelay = $(element).css('transition-delay')
+
+    const floatTransitionDuration = parseFloat(transitionDuration)
+    const floatTransitionDelay = parseFloat(transitionDelay)
+
+    // Return 0 if element or transition duration is not found
+    if (!floatTransitionDuration && !floatTransitionDelay) {
+      return 0
+    }
+
+    // If multiple durations are defined, take the first
+    transitionDuration = transitionDuration.split(',')[0]
+    transitionDelay = transitionDelay.split(',')[0]
+
+    return (parseFloat(transitionDuration) + parseFloat(transitionDelay)) * MILLISECONDS_MULTIPLIER
+  },
+
+  reflow(element) {
+    return element.offsetHeight
+  },
+
+  triggerTransitionEnd(element) {
+    $(element).trigger(TRANSITION_END)
+  },
+
+  // TODO: Remove in v5
+  supportsTransitionEnd() {
+    return Boolean(TRANSITION_END)
+  },
+
+  isElement(obj) {
+    return (obj[0] || obj).nodeType
+  },
+
+  typeCheckConfig(componentName, config, configTypes) {
+    for (const property in configTypes) {
+      if (Object.prototype.hasOwnProperty.call(configTypes, property)) {
+        const expectedTypes = configTypes[property]
+        const value         = config[property]
+        const valueType     = value && Util.isElement(value)
+          ? 'element' : toType(value)
+
+        if (!new RegExp(expectedTypes).test(valueType)) {
+          throw new Error(
+            `${componentName.toUpperCase()}: ` +
+            `Option "${property}" provided type "${valueType}" ` +
+            `but expected type "${expectedTypes}".`)
+        }
+      }
+    }
+  },
+
+  findShadowRoot(element) {
+    if (!document.documentElement.attachShadow) {
+      return null
+    }
+
+    // Can find the shadow root otherwise it'll return the document
+    if (typeof element.getRootNode === 'function') {
+      const root = element.getRootNode()
+      return root instanceof ShadowRoot ? root : null
+    }
+
+    if (element instanceof ShadowRoot) {
+      return element
+    }
+
+    // when we don't find a shadow root
+    if (!element.parentNode) {
+      return null
+    }
+
+    return Util.findShadowRoot(element.parentNode)
+  },
+
+  jQueryDetection() {
+    if (typeof $ === 'undefined') {
+      throw new TypeError('Bootstrap\'s JavaScript requires jQuery. jQuery must be included before Bootstrap\'s JavaScript.')
+    }
+
+    const version = $.fn.jquery.split(' ')[0].split('.')
+    const minMajor = 1
+    const ltMajor = 2
+    const minMinor = 9
+    const minPatch = 1
+    const maxMajor = 4
+
+    if (version[0] < ltMajor && version[1] < minMinor || version[0] === minMajor && version[1] === minMinor && version[2] < minPatch || version[0] >= maxMajor) {
+      throw new Error('Bootstrap\'s JavaScript requires at least jQuery v1.9.1 but less than v4.0.0')
+    }
+  }
+}
+
+Util.jQueryDetection()
+setTransitionEndSupport()
+
+export default Util
+
+/**
+ * --------------------------------------------------------------------------
+ * Bootstrap (v4.4.1): tooltip.js
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * --------------------------------------------------------------------------
+ */
+
+import {
+  DefaultWhitelist,
+  sanitizeHtml
+} from './tools/sanitizer'
+import $ from 'jquery'
+import Popper from 'popper.js'
 import Util from './util'
 
 /**
@@ -14,28 +215,99 @@ import Util from './util'
  * ------------------------------------------------------------------------
  */
 
-const NAME                = 'alert'
-const VERSION             = '4.4.1'
-const DATA_KEY            = 'bs.alert'
-const EVENT_KEY           = `.${DATA_KEY}`
-const DATA_API_KEY        = '.data-api'
-const JQUERY_NO_CONFLICT  = $.fn[NAME]
+const NAME                  = 'tooltip'
+const VERSION               = '4.4.1'
+const DATA_KEY              = 'bs.tooltip'
+const EVENT_KEY             = `.${DATA_KEY}`
+const JQUERY_NO_CONFLICT    = $.fn[NAME]
+const CLASS_PREFIX          = 'bs-tooltip'
+const BSCLS_PREFIX_REGEX    = new RegExp(`(^|\\s)${CLASS_PREFIX}\\S+`, 'g')
+const DISALLOWED_ATTRIBUTES = ['sanitize', 'whiteList', 'sanitizeFn']
 
-const Selector = {
-  DISMISS : '[data-dismiss="alert"]'
+const DefaultType = {
+  animation         : 'boolean',
+  template          : 'string',
+  title             : '(string|element|function)',
+  trigger           : 'string',
+  delay             : '(number|object)',
+  html              : 'boolean',
+  selector          : '(string|boolean)',
+  placement         : '(string|function)',
+  offset            : '(number|string|function)',
+  container         : '(string|element|boolean)',
+  fallbackPlacement : '(string|array)',
+  boundary          : '(string|element)',
+  sanitize          : 'boolean',
+  sanitizeFn        : '(null|function)',
+  whiteList         : 'object',
+  popperConfig      : '(null|object)'
+}
+
+const AttachmentMap = {
+  AUTO   : 'auto',
+  TOP    : 'top',
+  RIGHT  : 'right',
+  BOTTOM : 'bottom',
+  LEFT   : 'left'
+}
+
+const Default = {
+  animation         : true,
+  template          : '<div class="tooltip" role="tooltip">' +
+                    '<div class="arrow"></div>' +
+                    '<div class="tooltip-inner"></div></div>',
+  trigger           : 'hover focus',
+  title             : '',
+  delay             : 0,
+  html              : false,
+  selector          : false,
+  placement         : 'top',
+  offset            : 0,
+  container         : false,
+  fallbackPlacement : 'flip',
+  boundary          : 'scrollParent',
+  sanitize          : true,
+  sanitizeFn        : null,
+  whiteList         : DefaultWhitelist,
+  popperConfig      : null
+}
+
+const HoverState = {
+  SHOW : 'show',
+  OUT  : 'out'
 }
 
 const Event = {
-  CLOSE          : `close${EVENT_KEY}`,
-  CLOSED         : `closed${EVENT_KEY}`,
-  CLICK_DATA_API : `click${EVENT_KEY}${DATA_API_KEY}`
+  HIDE       : `hide${EVENT_KEY}`,
+  HIDDEN     : `hidden${EVENT_KEY}`,
+  SHOW       : `show${EVENT_KEY}`,
+  SHOWN      : `shown${EVENT_KEY}`,
+  INSERTED   : `inserted${EVENT_KEY}`,
+  CLICK      : `click${EVENT_KEY}`,
+  FOCUSIN    : `focusin${EVENT_KEY}`,
+  FOCUSOUT   : `focusout${EVENT_KEY}`,
+  MOUSEENTER : `mouseenter${EVENT_KEY}`,
+  MOUSELEAVE : `mouseleave${EVENT_KEY}`
 }
 
 const ClassName = {
-  ALERT : 'alert',
-  FADE  : 'fade',
-  SHOW  : 'show'
+  FADE : 'fade',
+  SHOW : 'show'
 }
+
+const Selector = {
+  TOOLTIP       : '.tooltip',
+  TOOLTIP_INNER : '.tooltip-inner',
+  ARROW         : '.arrow'
+}
+
+const Trigger = {
+  HOVER  : 'hover',
+  FOCUS  : 'focus',
+  CLICK  : 'click',
+  MANUAL : 'manual'
+}
+
 
 /**
  * ------------------------------------------------------------------------
@@ -43,9 +315,25 @@ const ClassName = {
  * ------------------------------------------------------------------------
  */
 
-class Alert {
-  constructor(element) {
-    this._element = element
+class Tooltip {
+  constructor(element, config) {
+    if (typeof Popper === 'undefined') {
+      throw new TypeError('Bootstrap\'s tooltips require Popper.js (https://popper.js.org/)')
+    }
+
+    // private
+    this._isEnabled     = true
+    this._timeout       = 0
+    this._hoverState    = ''
+    this._activeTrigger = {}
+    this._popper        = null
+
+    // Protected
+    this.element = element
+    this.config  = this._getConfig(config)
+    this.tip     = null
+
+    this._setListeners()
   }
 
   // Getters
@@ -54,250 +342,610 @@ class Alert {
     return VERSION
   }
 
+  static get Default() {
+    return Default
+  }
+
+  static get NAME() {
+    return NAME
+  }
+
+  static get DATA_KEY() {
+    return DATA_KEY
+  }
+
+  static get Event() {
+    return Event
+  }
+
+  static get EVENT_KEY() {
+    return EVENT_KEY
+  }
+
+  static get DefaultType() {
+    return DefaultType
+  }
+
   // Public
 
-  close(element) {
-    let rootElement = this._element
-    if (element) {
-      rootElement = this._getRootElement(element)
-    }
+  enable() {
+    this._isEnabled = true
+  }
 
-    const customEvent = this._triggerCloseEvent(rootElement)
+  disable() {
+    this._isEnabled = false
+  }
 
-    if (customEvent.isDefaultPrevented()) {
+  toggleEnabled() {
+    this._isEnabled = !this._isEnabled
+  }
+
+  toggle(event) {
+    if (!this._isEnabled) {
       return
     }
 
-    this._removeElement(rootElement)
+    if (event) {
+      const dataKey = this.constructor.DATA_KEY
+      let context = $(event.currentTarget).data(dataKey)
+
+      if (!context) {
+        context = new this.constructor(
+          event.currentTarget,
+          this._getDelegateConfig()
+        )
+        $(event.currentTarget).data(dataKey, context)
+      }
+
+      context._activeTrigger.click = !context._activeTrigger.click
+
+      if (context._isWithActiveTrigger()) {
+        context._enter(null, context)
+      } else {
+        context._leave(null, context)
+      }
+    } else {
+      if ($(this.getTipElement()).hasClass(ClassName.SHOW)) {
+        this._leave(null, this)
+        return
+      }
+
+      this._enter(null, this)
+    }
   }
 
   dispose() {
-    $.removeData(this._element, DATA_KEY)
-    this._element = null
+    clearTimeout(this._timeout)
+
+    $.removeData(this.element, this.constructor.DATA_KEY)
+
+    $(this.element).off(this.constructor.EVENT_KEY)
+    $(this.element).closest('.modal').off('hide.bs.modal', this._hideModalHandler)
+
+    if (this.tip) {
+      $(this.tip).remove()
+    }
+
+    this._isEnabled     = null
+    this._timeout       = null
+    this._hoverState    = null
+    this._activeTrigger = null
+    if (this._popper) {
+      this._popper.destroy()
+    }
+
+    this._popper = null
+    this.element = null
+    this.config  = null
+    this.tip     = null
+  }
+
+  show() {
+    if ($(this.element).css('display') === 'none') {
+      throw new Error('Please use show on visible elements')
+    }
+
+    const showEvent = $.Event(this.constructor.Event.SHOW)
+    if (this.isWithContent() && this._isEnabled) {
+      $(this.element).trigger(showEvent)
+
+      const shadowRoot = Util.findShadowRoot(this.element)
+      const isInTheDom = $.contains(
+        shadowRoot !== null ? shadowRoot : this.element.ownerDocument.documentElement,
+        this.element
+      )
+
+      if (showEvent.isDefaultPrevented() || !isInTheDom) {
+        return
+      }
+
+      const tip   = this.getTipElement()
+      const tipId = Util.getUID(this.constructor.NAME)
+
+      tip.setAttribute('id', tipId)
+      this.element.setAttribute('aria-describedby', tipId)
+
+      this.setContent()
+
+      if (this.config.animation) {
+        $(tip).addClass(ClassName.FADE)
+      }
+
+      const placement  = typeof this.config.placement === 'function'
+        ? this.config.placement.call(this, tip, this.element)
+        : this.config.placement
+
+      const attachment = this._getAttachment(placement)
+      this.addAttachmentClass(attachment)
+
+      const container = this._getContainer()
+      $(tip).data(this.constructor.DATA_KEY, this)
+
+      if (!$.contains(this.element.ownerDocument.documentElement, this.tip)) {
+        $(tip).appendTo(container)
+      }
+
+      $(this.element).trigger(this.constructor.Event.INSERTED)
+
+      this._popper = new Popper(this.element, tip, this._getPopperConfig(attachment))
+
+      $(tip).addClass(ClassName.SHOW)
+
+      // If this is a touch-enabled device we add extra
+      // empty mouseover listeners to the body's immediate children;
+      // only needed because of broken event delegation on iOS
+      // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
+      if ('ontouchstart' in document.documentElement) {
+        $(document.body).children().on('mouseover', null, $.noop)
+      }
+
+      const complete = () => {
+        if (this.config.animation) {
+          this._fixTransition()
+        }
+        const prevHoverState = this._hoverState
+        this._hoverState     = null
+
+        $(this.element).trigger(this.constructor.Event.SHOWN)
+
+        if (prevHoverState === HoverState.OUT) {
+          this._leave(null, this)
+        }
+      }
+
+      if ($(this.tip).hasClass(ClassName.FADE)) {
+        const transitionDuration = Util.getTransitionDurationFromElement(this.tip)
+
+        $(this.tip)
+          .one(Util.TRANSITION_END, complete)
+          .emulateTransitionEnd(transitionDuration)
+      } else {
+        complete()
+      }
+    }
+  }
+
+  hide(callback) {
+    const tip       = this.getTipElement()
+    const hideEvent = $.Event(this.constructor.Event.HIDE)
+    const complete = () => {
+      if (this._hoverState !== HoverState.SHOW && tip.parentNode) {
+        tip.parentNode.removeChild(tip)
+      }
+
+      this._cleanTipClass()
+      this.element.removeAttribute('aria-describedby')
+      $(this.element).trigger(this.constructor.Event.HIDDEN)
+      if (this._popper !== null) {
+        this._popper.destroy()
+      }
+
+      if (callback) {
+        callback()
+      }
+    }
+
+    $(this.element).trigger(hideEvent)
+
+    if (hideEvent.isDefaultPrevented()) {
+      return
+    }
+
+    $(tip).removeClass(ClassName.SHOW)
+
+    // If this is a touch-enabled device we remove the extra
+    // empty mouseover listeners we added for iOS support
+    if ('ontouchstart' in document.documentElement) {
+      $(document.body).children().off('mouseover', null, $.noop)
+    }
+
+    this._activeTrigger[Trigger.CLICK] = false
+    this._activeTrigger[Trigger.FOCUS] = false
+    this._activeTrigger[Trigger.HOVER] = false
+
+    if ($(this.tip).hasClass(ClassName.FADE)) {
+      const transitionDuration = Util.getTransitionDurationFromElement(tip)
+
+      $(tip)
+        .one(Util.TRANSITION_END, complete)
+        .emulateTransitionEnd(transitionDuration)
+    } else {
+      complete()
+    }
+
+    this._hoverState = ''
+  }
+
+  update() {
+    if (this._popper !== null) {
+      this._popper.scheduleUpdate()
+    }
+  }
+
+  // Protected
+
+  isWithContent() {
+    return Boolean(this.getTitle())
+  }
+
+  addAttachmentClass(attachment) {
+    $(this.getTipElement()).addClass(`${CLASS_PREFIX}-${attachment}`)
+  }
+
+  getTipElement() {
+    this.tip = this.tip || $(this.config.template)[0]
+    return this.tip
+  }
+
+  setContent() {
+    const tip = this.getTipElement()
+    this.setElementContent($(tip.querySelectorAll(Selector.TOOLTIP_INNER)), this.getTitle())
+    $(tip).removeClass(`${ClassName.FADE} ${ClassName.SHOW}`)
+  }
+
+  setElementContent($element, content) {
+    if (typeof content === 'object' && (content.nodeType || content.jquery)) {
+      // Content is a DOM node or a jQuery
+      if (this.config.html) {
+        if (!$(content).parent().is($element)) {
+          $element.empty().append(content)
+        }
+      } else {
+        $element.text($(content).text())
+      }
+
+      return
+    }
+
+    if (this.config.html) {
+      if (this.config.sanitize) {
+        content = sanitizeHtml(content, this.config.whiteList, this.config.sanitizeFn)
+      }
+
+      $element.html(content)
+    } else {
+      $element.text(content)
+    }
+  }
+
+  getTitle() {
+    let title = this.element.getAttribute('data-original-title')
+
+    if (!title) {
+      title = typeof this.config.title === 'function'
+        ? this.config.title.call(this.element)
+        : this.config.title
+    }
+
+    return title
   }
 
   // Private
 
-  _getRootElement(element) {
-    const selector = Util.getSelectorFromElement(element)
-    let parent     = false
-
-    if (selector) {
-      parent = document.querySelector(selector)
+  _getPopperConfig(attachment) {
+    const defaultBsConfig = {
+      placement: attachment,
+      modifiers: {
+        offset: this._getOffset(),
+        flip: {
+          behavior: this.config.fallbackPlacement
+        },
+        arrow: {
+          element: Selector.ARROW
+        },
+        preventOverflow: {
+          boundariesElement: this.config.boundary
+        }
+      },
+      onCreate: (data) => {
+        if (data.originalPlacement !== data.placement) {
+          this._handlePopperPlacementChange(data)
+        }
+      },
+      onUpdate: (data) => this._handlePopperPlacementChange(data)
     }
 
-    if (!parent) {
-      parent = $(element).closest(`.${ClassName.ALERT}`)[0]
+    return {
+      ...defaultBsConfig,
+      ...this.config.popperConfig
+    }
+  }
+
+  _getOffset() {
+    const offset = {}
+
+    if (typeof this.config.offset === 'function') {
+      offset.fn = (data) => {
+        data.offsets = {
+          ...data.offsets,
+          ...this.config.offset(data.offsets, this.element) || {}
+        }
+
+        return data
+      }
+    } else {
+      offset.offset = this.config.offset
     }
 
-    return parent
+    return offset
   }
 
-  _triggerCloseEvent(element) {
-    const closeEvent = $.Event(Event.CLOSE)
+  _getContainer() {
+    if (this.config.container === false) {
+      return document.body
+    }
 
-    $(element).trigger(closeEvent)
-    return closeEvent
+    if (Util.isElement(this.config.container)) {
+      return $(this.config.container)
+    }
+
+    return $(document).find(this.config.container)
   }
 
-  _removeElement(element) {
-    $(element).removeClass(ClassName.SHOW)
+  _getAttachment(placement) {
+    return AttachmentMap[placement.toUpperCase()]
+  }
 
-    if (!$(element).hasClass(ClassName.FADE)) {
-      this._destroyElement(element)
+  _setListeners() {
+    const triggers = this.config.trigger.split(' ')
+
+    triggers.forEach((trigger) => {
+      if (trigger === 'click') {
+        $(this.element).on(
+          this.constructor.Event.CLICK,
+          this.config.selector,
+          (event) => this.toggle(event)
+        )
+      } else if (trigger !== Trigger.MANUAL) {
+        const eventIn = trigger === Trigger.HOVER
+          ? this.constructor.Event.MOUSEENTER
+          : this.constructor.Event.FOCUSIN
+        const eventOut = trigger === Trigger.HOVER
+          ? this.constructor.Event.MOUSELEAVE
+          : this.constructor.Event.FOCUSOUT
+
+        $(this.element)
+          .on(
+            eventIn,
+            this.config.selector,
+            (event) => this._enter(event)
+          )
+          .on(
+            eventOut,
+            this.config.selector,
+            (event) => this._leave(event)
+          )
+      }
+    })
+
+    this._hideModalHandler = () => {
+      if (this.element) {
+        this.hide()
+      }
+    }
+
+    $(this.element).closest('.modal').on(
+      'hide.bs.modal',
+      this._hideModalHandler
+    )
+
+    if (this.config.selector) {
+      this.config = {
+        ...this.config,
+        trigger: 'manual',
+        selector: ''
+      }
+    } else {
+      this._fixTitle()
+    }
+  }
+
+  _fixTitle() {
+    const titleType = typeof this.element.getAttribute('data-original-title')
+
+    if (this.element.getAttribute('title') || titleType !== 'string') {
+      this.element.setAttribute(
+        'data-original-title',
+        this.element.getAttribute('title') || ''
+      )
+
+      this.element.setAttribute('title', '')
+    }
+  }
+
+  _enter(event, context) {
+    const dataKey = this.constructor.DATA_KEY
+    context = context || $(event.currentTarget).data(dataKey)
+
+    if (!context) {
+      context = new this.constructor(
+        event.currentTarget,
+        this._getDelegateConfig()
+      )
+      $(event.currentTarget).data(dataKey, context)
+    }
+
+    if (event) {
+      context._activeTrigger[
+        event.type === 'focusin' ? Trigger.FOCUS : Trigger.HOVER
+      ] = true
+    }
+
+    if ($(context.getTipElement()).hasClass(ClassName.SHOW) || context._hoverState === HoverState.SHOW) {
+      context._hoverState = HoverState.SHOW
       return
     }
 
-    const transitionDuration = Util.getTransitionDurationFromElement(element)
+    clearTimeout(context._timeout)
 
-    $(element)
-      .one(Util.TRANSITION_END, (event) => this._destroyElement(element, event))
-      .emulateTransitionEnd(transitionDuration)
-  }
+    context._hoverState = HoverState.SHOW
 
-  _destroyElement(element) {
-    $(element)
-      .detach()
-      .trigger(Event.CLOSED)
-      .remove()
-  }
-
-  // Static
-
-  static _jQueryInterface(config) {
-    return this.each(function () {
-      const $element = $(this)
-      let data       = $element.data(DATA_KEY)
-
-      if (!data) {
-        data = new Alert(this)
-        $element.data(DATA_KEY, data)
-      }
-
-      if (config === 'close') {
-        data[config](this)
-      }
-    })
-  }
-
-  static _handleDismiss(alertInstance) {
-    return function (event) {
-      if (event) {
-        event.preventDefault()
-      }
-
-      alertInstance.close(this)
+    if (!context.config.delay || !context.config.delay.show) {
+      context.show()
+      return
     }
-  }
-}
 
-/**
- * ------------------------------------------------------------------------
- * Data Api implementation
- * ------------------------------------------------------------------------
- */
-
-$(document).on(
-  Event.CLICK_DATA_API,
-  Selector.DISMISS,
-  Alert._handleDismiss(new Alert())
-)
-
-/**
- * ------------------------------------------------------------------------
- * jQuery
- * ------------------------------------------------------------------------
- */
-
-$.fn[NAME]             = Alert._jQueryInterface
-$.fn[NAME].Constructor = Alert
-$.fn[NAME].noConflict  = () => {
-  $.fn[NAME] = JQUERY_NO_CONFLICT
-  return Alert._jQueryInterface
-}
-
-export default Alert
-
-/**
- * --------------------------------------------------------------------------
- * Bootstrap (v4.4.1): button.js
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- * --------------------------------------------------------------------------
- */
-
-import $ from 'jquery'
-
-/**
- * ------------------------------------------------------------------------
- * Constants
- * ------------------------------------------------------------------------
- */
-
-const NAME                = 'button'
-const VERSION             = '4.4.1'
-const DATA_KEY            = 'bs.button'
-const EVENT_KEY           = `.${DATA_KEY}`
-const DATA_API_KEY        = '.data-api'
-const JQUERY_NO_CONFLICT  = $.fn[NAME]
-
-const ClassName = {
-  ACTIVE : 'active',
-  BUTTON : 'btn',
-  FOCUS  : 'focus'
-}
-
-const Selector = {
-  DATA_TOGGLE_CARROT   : '[data-toggle^="button"]',
-  DATA_TOGGLES         : '[data-toggle="buttons"]',
-  DATA_TOGGLE          : '[data-toggle="button"]',
-  DATA_TOGGLES_BUTTONS : '[data-toggle="buttons"] .btn',
-  INPUT                : 'input:not([type="hidden"])',
-  ACTIVE               : '.active',
-  BUTTON               : '.btn'
-}
-
-const Event = {
-  CLICK_DATA_API      : `click${EVENT_KEY}${DATA_API_KEY}`,
-  FOCUS_BLUR_DATA_API : `focus${EVENT_KEY}${DATA_API_KEY} ` +
-                          `blur${EVENT_KEY}${DATA_API_KEY}`,
-  LOAD_DATA_API       : `load${EVENT_KEY}${DATA_API_KEY}`
-}
-
-/**
- * ------------------------------------------------------------------------
- * Class Definition
- * ------------------------------------------------------------------------
- */
-
-class Button {
-  constructor(element) {
-    this._element = element
+    context._timeout = setTimeout(() => {
+      if (context._hoverState === HoverState.SHOW) {
+        context.show()
+      }
+    }, context.config.delay.show)
   }
 
-  // Getters
+  _leave(event, context) {
+    const dataKey = this.constructor.DATA_KEY
+    context = context || $(event.currentTarget).data(dataKey)
 
-  static get VERSION() {
-    return VERSION
+    if (!context) {
+      context = new this.constructor(
+        event.currentTarget,
+        this._getDelegateConfig()
+      )
+      $(event.currentTarget).data(dataKey, context)
+    }
+
+    if (event) {
+      context._activeTrigger[
+        event.type === 'focusout' ? Trigger.FOCUS : Trigger.HOVER
+      ] = false
+    }
+
+    if (context._isWithActiveTrigger()) {
+      return
+    }
+
+    clearTimeout(context._timeout)
+
+    context._hoverState = HoverState.OUT
+
+    if (!context.config.delay || !context.config.delay.hide) {
+      context.hide()
+      return
+    }
+
+    context._timeout = setTimeout(() => {
+      if (context._hoverState === HoverState.OUT) {
+        context.hide()
+      }
+    }, context.config.delay.hide)
   }
 
-  // Public
+  _isWithActiveTrigger() {
+    for (const trigger in this._activeTrigger) {
+      if (this._activeTrigger[trigger]) {
+        return true
+      }
+    }
 
-  toggle() {
-    let triggerChangeEvent = true
-    let addAriaPressed = true
-    const rootElement = $(this._element).closest(
-      Selector.DATA_TOGGLES
-    )[0]
+    return false
+  }
 
-    if (rootElement) {
-      const input = this._element.querySelector(Selector.INPUT)
+  _getConfig(config) {
+    const dataAttributes = $(this.element).data()
 
-      if (input) {
-        if (input.type === 'radio') {
-          if (input.checked &&
-            this._element.classList.contains(ClassName.ACTIVE)) {
-            triggerChangeEvent = false
-          } else {
-            const activeElement = rootElement.querySelector(Selector.ACTIVE)
-
-            if (activeElement) {
-              $(activeElement).removeClass(ClassName.ACTIVE)
-            }
-          }
-        } else if (input.type === 'checkbox') {
-          if (this._element.tagName === 'LABEL' && input.checked === this._element.classList.contains(ClassName.ACTIVE)) {
-            triggerChangeEvent = false
-          }
-        } else {
-          // if it's not a radio button or checkbox don't add a pointless/invalid checked property to the input
-          triggerChangeEvent = false
+    Object.keys(dataAttributes)
+      .forEach((dataAttr) => {
+        if (DISALLOWED_ATTRIBUTES.indexOf(dataAttr) !== -1) {
+          delete dataAttributes[dataAttr]
         }
+      })
 
-        if (triggerChangeEvent) {
-          input.checked = !this._element.classList.contains(ClassName.ACTIVE)
-          $(input).trigger('change')
-        }
+    config = {
+      ...this.constructor.Default,
+      ...dataAttributes,
+      ...typeof config === 'object' && config ? config : {}
+    }
 
-        input.focus()
-        addAriaPressed = false
+    if (typeof config.delay === 'number') {
+      config.delay = {
+        show: config.delay,
+        hide: config.delay
       }
     }
 
-    if (!(this._element.hasAttribute('disabled') || this._element.classList.contains('disabled'))) {
-      if (addAriaPressed) {
-        this._element.setAttribute('aria-pressed',
-          !this._element.classList.contains(ClassName.ACTIVE))
-      }
+    if (typeof config.title === 'number') {
+      config.title = config.title.toString()
+    }
 
-      if (triggerChangeEvent) {
-        $(this._element).toggleClass(ClassName.ACTIVE)
+    if (typeof config.content === 'number') {
+      config.content = config.content.toString()
+    }
+
+    Util.typeCheckConfig(
+      NAME,
+      config,
+      this.constructor.DefaultType
+    )
+
+    if (config.sanitize) {
+      config.template = sanitizeHtml(config.template, config.whiteList, config.sanitizeFn)
+    }
+
+    return config
+  }
+
+  _getDelegateConfig() {
+    const config = {}
+
+    if (this.config) {
+      for (const key in this.config) {
+        if (this.constructor.Default[key] !== this.config[key]) {
+          config[key] = this.config[key]
+        }
       }
+    }
+
+    return config
+  }
+
+  _cleanTipClass() {
+    const $tip = $(this.getTipElement())
+    const tabClass = $tip.attr('class').match(BSCLS_PREFIX_REGEX)
+    if (tabClass !== null && tabClass.length) {
+      $tip.removeClass(tabClass.join(''))
     }
   }
 
-  dispose() {
-    $.removeData(this._element, DATA_KEY)
-    this._element = null
+  _handlePopperPlacementChange(popperData) {
+    const popperInstance = popperData.instance
+    this.tip = popperInstance.popper
+    this._cleanTipClass()
+    this.addAttachmentClass(this._getAttachment(popperData.placement))
+  }
+
+  _fixTransition() {
+    const tip = this.getTipElement()
+    const initConfigAnimation = this.config.animation
+
+    if (tip.getAttribute('x-placement') !== null) {
+      return
+    }
+
+    $(tip).removeClass(ClassName.FADE)
+    this.config.animation = false
+    this.hide()
+    this.show()
+    this.config.animation = initConfigAnimation
   }
 
   // Static
@@ -305,13 +953,21 @@ class Button {
   static _jQueryInterface(config) {
     return this.each(function () {
       let data = $(this).data(DATA_KEY)
+      const _config = typeof config === 'object' && config
+
+      if (!data && /dispose|hide/.test(config)) {
+        return
+      }
 
       if (!data) {
-        data = new Button(this)
+        data = new Tooltip(this, _config)
         $(this).data(DATA_KEY, data)
       }
 
-      if (config === 'toggle') {
+      if (typeof config === 'string') {
+        if (typeof data[config] === 'undefined') {
+          throw new TypeError(`No method named "${config}"`)
+        }
         data[config]()
       }
     })
@@ -320,74 +976,15 @@ class Button {
 
 /**
  * ------------------------------------------------------------------------
- * Data Api implementation
- * ------------------------------------------------------------------------
- */
-
-$(document)
-  .on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE_CARROT, (event) => {
-    let button = event.target
-
-    if (!$(button).hasClass(ClassName.BUTTON)) {
-      button = $(button).closest(Selector.BUTTON)[0]
-    }
-
-    if (!button || button.hasAttribute('disabled') || button.classList.contains('disabled')) {
-      event.preventDefault() // work around Firefox bug #1540995
-    } else {
-      const inputBtn = button.querySelector(Selector.INPUT)
-
-      if (inputBtn && (inputBtn.hasAttribute('disabled') || inputBtn.classList.contains('disabled'))) {
-        event.preventDefault() // work around Firefox bug #1540995
-        return
-      }
-
-      Button._jQueryInterface.call($(button), 'toggle')
-    }
-  })
-  .on(Event.FOCUS_BLUR_DATA_API, Selector.DATA_TOGGLE_CARROT, (event) => {
-    const button = $(event.target).closest(Selector.BUTTON)[0]
-    $(button).toggleClass(ClassName.FOCUS, /^focus(in)?$/.test(event.type))
-  })
-
-$(window).on(Event.LOAD_DATA_API, () => {
-  // ensure correct active class is set to match the controls' actual values/states
-
-  // find all checkboxes/readio buttons inside data-toggle groups
-  let buttons = [].slice.call(document.querySelectorAll(Selector.DATA_TOGGLES_BUTTONS))
-  for (let i = 0, len = buttons.length; i < len; i++) {
-    const button = buttons[i]
-    const input = button.querySelector(Selector.INPUT)
-    if (input.checked || input.hasAttribute('checked')) {
-      button.classList.add(ClassName.ACTIVE)
-    } else {
-      button.classList.remove(ClassName.ACTIVE)
-    }
-  }
-
-  // find all button toggles
-  buttons = [].slice.call(document.querySelectorAll(Selector.DATA_TOGGLE))
-  for (let i = 0, len = buttons.length; i < len; i++) {
-    const button = buttons[i]
-    if (button.getAttribute('aria-pressed') === 'true') {
-      button.classList.add(ClassName.ACTIVE)
-    } else {
-      button.classList.remove(ClassName.ACTIVE)
-    }
-  }
-})
-
-/**
- * ------------------------------------------------------------------------
  * jQuery
  * ------------------------------------------------------------------------
  */
 
-$.fn[NAME] = Button._jQueryInterface
-$.fn[NAME].Constructor = Button
+$.fn[NAME] = Tooltip._jQueryInterface
+$.fn[NAME].Constructor = Tooltip
 $.fn[NAME].noConflict = () => {
   $.fn[NAME] = JQUERY_NO_CONFLICT
-  return Button._jQueryInterface
+  return Tooltip._jQueryInterface
 }
 
-export default Button
+export default Tooltip
