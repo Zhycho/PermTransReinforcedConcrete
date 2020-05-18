@@ -44,8 +44,8 @@ $(document).ready(function() {
         slidesToShow: 1,
         dots: false,
         slidesToScroll: 1,
-        prevArrow: $('.js--product-slider__prev'),
-        nextArrow: $('.js--product-slider__next'),
+        prevArrow: $('.js--individual-product-slider__prev'),
+        nextArrow: $('.js--individual-product-slider__next'),
     });
 
     // Слайдер в продукте
@@ -78,6 +78,37 @@ $(document).ready(function() {
               slidesToShow: 3
             }
           },
+          {
+            breakpoint: 769,
+            settings: 'unslick'
+          },
+        ]
+    });
+
+    // Слайдер в комлекте
+    $('.js--product-kit-slider__project').slick({
+        infinite: false,
+        slidesToShow: 1,
+        dots: false,
+        slidesToScroll: 1,
+        arrows: false,
+        swipe: false,
+        speed: 700,
+        fade: true,
+        prevArrow: $('.js--product-kit-slider__prev'),
+        nextArrow: $('.js--product-kit-slider__next'),
+        asNavFor: '.js--product-kit-slider__nav',
+    });
+    $('.js--product-kit-slider__nav').slick({
+        infinite: false,
+        slidesToShow: 4,
+        dots: false,
+        slidesToScroll: 1,
+        vertical: true,
+        arrows: false,
+        focusOnSelect: true,
+        asNavFor: '.js--product-kit-slider__project',
+        responsive: [
           {
             breakpoint: 769,
             settings: 'unslick'
