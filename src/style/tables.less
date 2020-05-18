@@ -45,6 +45,11 @@
     }
 }
 
+.table-price-mobile {
+    font-size: 1rem!important;
+    font-weight: 700!important;
+}
+
 .product-table {
 
     .table-line {
@@ -127,6 +132,8 @@
     }
 }
 
+// Комплект
+
 .complect-table {
     .table-line {
         display: grid;
@@ -182,6 +189,28 @@
             font-size: 1rem;
             font-weight: 700;
             text-align: center;
+        }
+    }
+
+    &.complect-table__price_gray {
+        background-color: #919191;
+        color: #FFF;
+    }
+
+    &.complect-table__price_red {
+        background-color: #bf272e;
+        color: #FFF;
+    }
+
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr 1fr;
+        padding: 0 10px;
+
+        div {
+    
+            &:nth-of-type(1) {
+                text-align: start;
+            }
         }
     }
 }
@@ -290,5 +319,127 @@
 
     @media (max-width: 768px) {
         display: flex;
+    }
+}
+
+// Корзина
+
+.basket-table {
+    .table-line {
+        display: grid;
+        gap: 4px;
+        grid-template-columns: 1.5fr 1fr 1fr 1fr 56px;
+        margin-bottom: 4px;
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+    }
+
+    @media (max-width: 992px) {
+        .table-line {
+            
+        }
+    }
+
+    @media (max-width: 768px) {
+        display: none;
+    }
+}
+
+.table-delete {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    fill: #28272d;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+        fill: #bf272e;
+    }
+}
+
+.table-line_headline {
+
+    .table-delete {
+        fill: #FFF;
+
+        &:hover {
+            fill: #bf272e;
+        }
+    }
+}
+
+.basket-table-mobile {
+    display: none;
+    max-width: 500px;
+    margin: 0 auto;
+
+    & > li {
+        margin-bottom: 16px;
+        position: relative;
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+    }
+
+    @media (max-width: 768px) {
+        display: block;
+    }
+}
+
+.basket-table-mobile__headline {
+    background-color: #28272d;
+    color: #FFF;
+    display: block;
+    font-size: 0.875rem;
+    padding: 10px 36px;
+    text-align: center;
+}
+
+.basket-table-mobile__description {
+
+    li {
+        align-items: center;
+        border-bottom: 1px solid #f5f5f6;
+        display: flex;
+        padding: 12px;
+
+        span {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 400;
+
+            &:nth-of-type(1) {
+                padding-right: 12px;
+                width: 50%;
+            }
+
+            &:nth-of-type(2) {
+                text-align: center;
+                width: 50%;
+            }
+        }
+
+        &:last-of-type {
+            border-bottom: none;
+        }
+    }
+}
+
+.basket-table-mobile__delete {
+    align-items: center;
+    display: flex;
+    height: 32px;
+    justify-content: center;
+    width: 32px;
+    position: absolute;
+    right: 4px;
+    top: 3px;
+    fill: #FFF;
+
+    &:hover {
+        fill: #bf272e;
     }
 }

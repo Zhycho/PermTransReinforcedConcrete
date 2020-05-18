@@ -1,0 +1,115 @@
+.block.back-silver {
+    background-color: #f2f2f2;
+}
+
+.block.back-red {
+    background-color: #c02e35;
+}
+
+.about-geo {
+    position: relative;
+}
+
+.about-geo__description {
+    border-left: 4px solid #bf272e;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 24px;
+    max-width: 260px;
+    padding-left: 14px;
+    position: absolute;
+
+    strong {
+        font-size: 1.125rem;
+        font-weight: 700;
+    }
+}
+
+.about-geo__map {
+    margin: 0 auto;
+    width: fit-content;
+}
+
+.headline.headline_about {
+    margin-bottom: 32px;
+}
+
+.block-about-half {
+    align-items: center;
+    display: flex;
+
+    div {
+        width: 50%;
+    }
+
+    &.block-about-half_desc-right {
+        
+        div {
+
+            &:nth-of-type(2) {
+                padding-left: 48px;
+            }
+        }
+    }
+}
+
+.block-about-img {
+    display: block;
+    width: 100%;
+}
+
+.block-about-headline {
+    color: #bf272e;
+    font-size: 1.5rem;
+    font-weight: 400;
+    position: relative;
+    text-transform: uppercase;
+    z-index: 2;
+    align-items: center;
+    display: flex;
+    padding-left: 12px;
+    height: 70px;
+    margin-bottom: 32px;
+
+    &::before {
+        background-image: url(../img/about-headline-back.png);
+        background-repeat: no-repeat;
+        content: '';
+        display: block;
+        height: 70px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 0;
+        width: 150px;
+    }
+
+    &.block-about-headline_white-all {
+        color: #FFF;
+        
+        &::before {
+            background-image: url(../img/about-headline-back_white.png);
+        }
+    }
+
+    &.block-about-headline_black {
+        color: #191919;
+    }
+}
+
+.block-about-description {
+    font-size: 1rem;
+    font-weight: 400;
+
+    li {
+        margin-bottom: 16px;
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+    }
+
+    &.block-about-description_white {
+        color: #FFF;
+    }
+}

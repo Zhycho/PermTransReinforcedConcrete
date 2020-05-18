@@ -1,0 +1,144 @@
+.headline.headline_basket {
+    margin: 0 auto 32px;
+    max-width: 500px;
+
+    @media (max-width: 768px) {
+        font-size: 1.5rem;
+        text-align: center;
+        display: block;
+        margin-bottom: 20px;
+    }
+}
+
+.basket-table-header {
+    align-items: center;
+    display: flex;
+    margin-bottom: 8px;
+}
+
+.basket-item {
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+    margin-bottom: 40px;
+    padding: 8px;
+
+    @media (max-width: 768px) {
+        margin: 0 auto 40px;
+        max-width: 500px;
+    }
+}
+
+.basket-products-list {
+    border-bottom: 1px solid #e9e9e9;
+    margin-bottom: 32px;
+    padding-bottom: 80px;
+
+    .basket-item {
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+    }
+
+    @media (max-width: 768px) {
+        margin-bottom: 28px;
+        padding-bottom: 40px;
+    }
+}
+
+.basket-table-header__img {
+    margin-right: 32px;
+    
+    img {
+        display: block;
+        height: 100px;
+        object-fit: contain;
+        width: 120px;
+    }
+
+    @media (max-width: 768px) {
+        margin-right: 12px;
+    }
+}
+
+.basket-table-header__title {
+    font-size: 1rem;
+    text-transform: uppercase;
+
+    @media (max-width: 768px) {
+        font-size: 0.8rem;
+    }
+}
+
+.basket-complect-list-headline {
+    font-size: 1.5rem;
+    margin-bottom: 32px;
+    text-transform: uppercase;
+
+    @media (max-width: 768px) {
+        margin: 0 auto 32px;
+        max-width: 500px;
+        text-align: center;
+    }
+}
+
+.basket-complect-list {
+    border-bottom: 1px solid #e9e9e9;
+    margin-bottom: 32px;
+
+    .complect-table__price {
+        margin-top: 4px;
+    }
+}
+
+.basket-buttons {
+    display: flex;
+    justify-content: flex-end;
+
+    a {
+        font-size: 0.8rem;
+        height: 42px;
+        width: 245px;
+
+        &:nth-of-type(1) {
+            align-items: center;
+            display: flex;
+
+            svg {
+                margin-right: 12px;
+            }
+        }
+
+        &:nth-of-type(2) {
+            line-height: 40px;
+            margin-left: 10px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        max-width: 500px;
+        margin: 0 auto;
+
+        a {
+            margin: 0 5px;
+            width: 50%;
+        }
+    }
+    
+    @media (max-width: 576px) {
+        flex-wrap: wrap;
+
+        a {
+            margin: 0;
+            width: 100%;
+
+            &:nth-of-type(1) {
+                justify-content: center;
+                margin-bottom: 8px;
+            }
+
+            &:nth-of-type(2) {
+                margin-left: 0;
+            }
+        }
+    }
+}

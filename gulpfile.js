@@ -119,9 +119,11 @@ gulp.task('webserver', function() {
         server: {
             baseDir: './build'
         },
+        online: true,
         notify: false
     });
 });
 
-gulp.task('default', gulp.parallel('build', 'webserver', 'watch'));
+gulp.task('default', gulp.parallel('webserver', 'watch'));
 
+// 'build'

@@ -1,0 +1,66 @@
+doctype html
+html(lang="ru")
+    head
+        include ./templates/head/head.pug
+    body
+        header
+            include ./templates/header/header.pug
+        main
+            .container.container_page
+                include ./templates/breadcrumb/breadcrumb.pug
+                h1.headline.headline_page О нас
+                .about-geo
+                    p.about-geo__description <strong>География поставок</strong> охватывает всю территорию России от Калининграда до Сахалина, а также страны ближнего зарубежья.
+                    .about-geo__map
+                        img(src="assets/img/about-map.png", alt="Карта России")
+            .block.back-silver
+                .container
+                    h2.headline.headline_about Почему мы?
+                    .block-about-half.block-about-half_desc-right
+                        div
+                            img(src="assets/img/about_01.png", alt="").block-about-img
+                        div
+                            h3.block-about-headline Лучшее для строительтсва
+                            ul.block-about-description
+                                li 64 года на рынке железобетона
+                                li 11 лет на рынке газобетона
+                                li Более 500 видов продукции
+                                li Более 2 000 клиентов из России и стран СНГ
+            .block
+                .container
+                    .block-about-half
+                        div
+                            h3.block-about-headline Невозможное возможно
+                            ul.block-about-description
+                                li Изготовление нестандартных деталей
+                                li Индивидуальный подход к каждому клиенту
+                                li Быстрое решение любых вопросов
+                                li Минимальные сроки поставки
+                        div
+                            img(src="assets/img/about_02.png", alt="").block-about-img
+            .block.back-red
+                .container
+                    .block-about-half.block-about-half_desc-right
+                        div
+                            img(src="assets/img/about_03.png", alt="").block-about-img
+                        div
+                            h3.block-about-headline.block-about-headline_white-all Лучшее для строительтсва
+                            ul.block-about-description.block-about-description_white
+                                li 64 года на рынке железобетона
+                                li 11 лет на рынке газобетона
+                                li Более 500 видов продукции
+                                li Более 2 000 клиентов из России и стран СНГ
+            .block.back-silver
+                .container
+                    .block-about-half
+                        div
+                            h3.block-about-headline.block-about-headline_black Компания - это мы
+                            ul.block-about-description
+                                li Более 700 сотрудников
+                                li Преемственность поколений
+                                li Коллаборация молодых и старших специалистов
+                        div
+                            img(src="assets/img/about_04.png", alt="").block-about-img
+            include ./templates/contacts/contacts.pug
+        footer
+            include ./templates/footer/footer.pug
