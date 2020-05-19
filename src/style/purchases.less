@@ -1,0 +1,39 @@
+.purchases-subheadline {
+    display: block;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    border-bottom: 1px solid #e8e8e8;
+    margin-bottom: 32px;
+    padding-bottom: 28px;
+
+    @media (max-width: 768px) {
+        font-size: 1.25rem;
+        margin-bottom: 24px;
+        padding-bottom: 20px;
+        text-align: center;
+    }
+}
+
+.purchases-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -6px 44px;
+
+    @media (max-width: 576px) {
+        margin: 0 -4px 24px;
+    }
+}
+
+.purchases-list__image-card {
+    margin: 0 6px 12px;
+    width: calc(50% - 12px);
+
+    @media (max-width: 576px) {
+        margin: 0 4px 8px;
+        width: calc(50% - 8px);
+    }
+
+    @media (max-width: 480px) {
+        width: calc(100% - 8px);
+    }
+}

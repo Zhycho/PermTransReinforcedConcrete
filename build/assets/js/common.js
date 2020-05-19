@@ -116,6 +116,15 @@ $(document).ready(function() {
         ]
     });
 
+    // Слайдер индивидуальных продуктов
+    $('.js--vacancies-slider').slick({
+        infinite: false,
+        slidesToShow: 1,
+        dots: true,
+        slidesToScroll: 1,
+        arrows: false,
+    });
+
 
     // Поиск в хедере
     $('.js--header-search').on('click', function(){

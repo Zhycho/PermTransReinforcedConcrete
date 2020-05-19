@@ -1,0 +1,62 @@
+doctype html
+html(lang="ru")
+    head
+        include ./templates/head/head.pug
+    body
+        header
+            include ./templates/header/header.pug
+        main
+            .container.container_page
+                include ./templates/breadcrumb/breadcrumb.pug
+                .content-with-left-aside
+                    aside.aside-nav.aside-nav_small
+                        nav
+                            ul
+                                li
+                                    a(href="purchases.html").btn.btn-gray.btn-lg.btn-block.btn-nav.active Закупки
+                                li
+                                    a(href="anti-corruption.html").btn.btn-gray.btn-lg.btn-block.btn-nav Антикоррупция
+                    .content-with-left-aside__content
+                        h1.headline.headline_page Закупки
+                        span.purchases-subheadline Компания закупает
+                        ul.purchases-list
+                            li.image-card.purchases-list__image-card
+                                img(src="assets/img/purchases_01.jpg", alt="")
+                                h3.image-card__title.image-card__title_center Цемент
+                            li.image-card.purchases-list__image-card
+                                img(src="assets/img/purchases_02.jpg", alt="")
+                                h3.image-card__title.image-card__title_center Металл
+                            li.image-card.purchases-list__image-card
+                                img(src="assets/img/purchases_03.jpg", alt="")
+                                h3.image-card__title.image-card__title_center Инертные материалы
+                            li.image-card.purchases-list__image-card
+                                img(src="assets/img/purchases_04.jpg", alt="")
+                                h3.image-card__title.image-card__title_center Другое
+                        .individual-form
+                            form(action="")
+                                h2.individual-form__headline Отправить коммерческое предложение
+                                label.input-default.individual-form__input-default
+                                    input(type="text", name="" placeholder="Имя *" required)
+                                    span.red-square
+                                label.input-default.individual-form__input-default
+                                    input(type="tel", name="" placeholder="Телефон *" required)
+                                    span.red-square
+                                label.input-default.individual-form__input-default
+                                    input(type="email", name="" placeholder="E-mail *" required)
+                                    span.red-square
+                                label.textarea-default.individual-form__textarea-default
+                                    textarea(name="", cols="30", rows="10" placeholder="Описание заказа *" required)
+                                    span.red-square
+                                .individual-form-download-wrapper
+                                    div
+                                        span *Прикрепите документ предложение (.pdf, .docx или .xlsx):
+                                    label.individual-form-download
+                                        input(type="file", name="")
+                                        span Загрузить файл
+                                label.input-checkbox.individual-form__input-checkbox
+                                    input(type="checkbox", name="")
+                                    span Я согласен с политикой конфиденциальности и даю согласие на обработку моих персональных данных
+                                input(type="submit", value="Отправить КП").btn.btn-primary.btn-lg.btn-block.individual-form__submit
+            include ./templates/contacts/contacts.pug
+        footer
+            include ./templates/footer/footer.pug
