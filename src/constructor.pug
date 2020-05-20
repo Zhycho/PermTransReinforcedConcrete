@@ -1,0 +1,33 @@
+doctype html
+html(lang="ru")
+    head
+        include ./templates/head/head.pug
+    body
+        header
+            include ./templates/header/header.pug
+        main
+            .container.container_page
+                include ./templates/breadcrumb/breadcrumb.pug
+                h1.headline.headline_page.headline_constructor Калькулятор газобетона автоклавного твердения
+                .constructor-block.constructor-block_gray
+                    .constructor-block__headline-wrapper
+                        span.constructor-block__headline-number 01
+                        h2.constructor-block__headline Ваши данные
+                    .constructor-block__description
+                        div
+                        div
+                            p *Указав точные параметры объекта строительства и тип газобетонных блоков, Вы можете предварительно рассчитать требуемое количество блоков и комплектность заказа в поддонах.
+                    ul.constructor-block__input-list
+                        li.constructor-block__input
+                            div
+                                label(for="") Выберите тип блока:
+                            div
+                                input(type="text" placeholder="Блок | (600*300*188)")
+                        li.constructor-block__input
+                            div
+                                label(for="") Введите общую длину 
+                            div
+                                input(type="text")
+            include ./templates/contacts/contacts.pug
+        footer
+            include ./templates/footer/footer.pug

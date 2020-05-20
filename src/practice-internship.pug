@@ -1,0 +1,58 @@
+doctype html
+html(lang="ru")
+    head
+        include ./templates/head/head.pug
+    body
+        header
+            include ./templates/header/header.pug
+        main
+            .container.container_page
+                include ./templates/breadcrumb/breadcrumb.pug
+                .content-with-left-aside
+                    aside.aside-nav.aside-nav_small
+                        nav
+                            ul
+                                li
+                                    a(href="vacancies.html").btn.btn-gray.btn-lg.btn-block.btn-nav Вакансии
+                                li
+                                    a(href="practice-internship.html").btn.btn-gray.btn-lg.btn-block.btn-nav.active Практика и стажировка
+                    .content-with-left-aside__content
+                        h1.headline.headline_page Практика и стажировка
+                        .slider-bottom-nav
+                            .js--practice-internship-slider.practice-internship-slider
+                                .practice-internship-slider-item
+                                    img(src="assets/img/typical-img.png", alt="")
+                                .practice-internship-slider-item
+                                    img(src="assets/img/typical-img.png", alt="")
+                                .practice-internship-slider-item
+                                    img(src="assets/img/typical-img.png", alt="")
+                                .practice-internship-slider-item
+                                    img(src="assets/img/typical-img.png", alt="")
+                        .practice-internship-form
+                            form(action="")
+                                h2.practice-internship-form__headline Запись
+                                label.input-default.practice-internship-form__input-default
+                                    input(type="text", name="" placeholder="Имя *" required)
+                                    span.red-square
+                                label.input-default.practice-internship-form__input-default
+                                    input(type="tel", name="" placeholder="Телефон *" required)
+                                    span.red-square
+                                label.input-default.practice-internship-form__input-default
+                                    input(type="email", name="" placeholder="E-mail *" required)
+                                    span.red-square
+                                label.textarea-default.practice-internship-form__textarea-default
+                                    textarea(name="", cols="30", rows="10" placeholder="Комментарий *" required)
+                                    span.red-square
+                                label.input-checkbox.practice-internship-form__input-checkbox
+                                    input(type="checkbox", name="")
+                                    span Я согласен с политикой конфиденциальности и даю согласие на обработку моих персональных данных
+                                .practice-internship-form__submits
+                                    label(for="internship") записаться на:
+                                        strong стажировку для студентов
+                                    label(for="excursion") записаться на:
+                                        strong школьную экскурсию по заводу
+                                    input(type="submit", value="Стажировка для студентов")#internship
+                                    input(type="submit", value="Школьная экскурсия по заводу")#excursion
+            include ./templates/contacts/contacts.pug
+        footer
+            include ./templates/footer/footer.pug

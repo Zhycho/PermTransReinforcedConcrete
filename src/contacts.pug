@@ -1,0 +1,98 @@
+doctype html
+html(lang="ru")
+    head
+        include ./templates/head/head.pug
+    body
+        header
+            include ./templates/header/header.pug
+        main
+            .container.container_page
+                include ./templates/breadcrumb/breadcrumb.pug
+                h1.headline.headline_page Контакты
+                address.contacts-page
+                    h2.contacts-page-headline Завод АО "ПермТрансЖелезоБетон"
+                    .contacts-page-wide-line
+                        div
+                            strong Адрес: 
+                            span  Россия, 614050, Пермский край, п. Оверята, ул. Комсомольская, 2
+                        div
+                            strong Телефон: 
+                            span  8 (324) 258-40-05
+                        div
+                            strong E-mail: 
+                            span  intd@betokam.ru
+                    .contacts-two-col
+                        div
+                            h2.contacts-page-headline Офисы продаж
+                            h3.contacts-page-line-headline Москва
+                            .contacts-page-line
+                                div
+                                    strong Телефон:
+                                    span 8 (495) 755-47-20
+                                div
+                                    strong E-mail:
+                                    span bk_centr@mail.ru
+                                div
+                                    strong
+                                    span
+                            h3.contacts-page-line-headline Пермь
+                            .contacts-page-line
+                                div
+                                    strong Адрес:
+                                    span ул. Ленина, д. 69, оф. 1
+                                div
+                                    strong Телефон:
+                                    span 8 (342) 259-87-01
+                                div
+                                    strong E-mail:
+                                    span office@betokam.ru td@betokam.ru
+                            h3.contacts-page-line-headline П. Оверята
+                            .contacts-page-line
+                                div
+                                    strong Адрес:
+                                    span ул. Комсомольская, 2
+                                div
+                                    strong Телефон:
+                                    span 8 (342) 258-40-05
+                                div
+                                    strong E-mail:
+                                    span intd@betokam.ru
+                        div
+                            h2.contacts-page-headline Подразделения
+                            h3.contacts-page-line-headline Отдел снабжения и закупок
+                            .contacts-page-line
+                                div
+                                    strong Адрес:
+                                    span Россия, 614050, Пермский край, п. Оверята, ул. Комсомольская, 2
+                                div
+                                    strong Телефон:
+                                    span 8 (342) 232-00-88
+                                div
+                                    strong E-mail:
+                                    span tender@betokam.ru
+                            h3.contacts-page-line-headline Отдел кадров
+                            .contacts-page-line
+                                div
+                                    strong Адрес:
+                                    span Россия, 614050, Пермский край, п. Оверята, ул. Комсомольская, 2
+                                div
+                                    strong Телефон:
+                                    span 8 (342) 232-00-88
+                                div
+                                    strong E-mail:
+                                    span ok@betokam.ru
+                            h3.contacts-page-line-headline Отдел маркетинга и PR
+                            .contacts-page-line
+                                div
+                                    strong E-mail:
+                                    span marketolog@betokam.ru
+                                div
+                                    strong
+                                    span
+                                div
+                                    strong
+                                    span
+                a(href="dealers.html").bordered-link Наши диллеры
+            include ./templates/contacts/contacts.pug
+        footer
+            include ./templates/footer/footer.pug

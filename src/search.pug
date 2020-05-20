@@ -1,0 +1,58 @@
+doctype html
+html(lang="ru")
+    head
+        include ./templates/head/head.pug
+    body
+        header
+            include ./templates/header/header.pug
+        main
+            .container.container_page
+                include ./templates/breadcrumb/breadcrumb.pug
+                .search-request
+                    h1.headline.headline_page Ваш запрос:
+                    span.search-request__result ЖБИ в форме глыбы
+                .found
+                    .found-item
+                        span.found-item__label Проект
+                        div
+                            .found-item__img
+                                img(src="assets/img/house-Betosha.png", alt="")
+                            h3.found-item__headline Дом «Бетоша»
+                        div
+                            span Общая стоимость:
+                            span.found-item__price 2 352 &#8381;
+                        div
+                            a(href="#").btn.btn-primary.found-item__detail Подробнее
+                    .found-item
+                        span.found-item__label Продукция
+                        div
+                            .found-item__img
+                                img(src="assets/img/house-Betosha.png", alt="")
+                            h3.found-item__headline Балка
+                        div
+                            span Стоимость:
+                            span.found-item__price 2 352 &#8381;
+                        div
+                            a(href="#").btn.btn-primary.found-item__detail Подробнее
+                    .found-item
+                        span.found-item__label Проект
+                        div
+                            .found-item__img
+                                img(src="assets/img/house-Betosha.png", alt="")
+                            h3.found-item__headline Дом «Бетоша»
+                        div
+                            span Общая стоимость:
+                            span.found-item__price 2 352 &#8381;
+                        div
+                            a(href="#").btn.btn-primary.found-item__detail Подробнее
+                    .found-item
+                        span.found-item__label Статья
+                        div
+                            h3.found-item__headline ЖБИ в форме глыбы
+                        div
+                            span Краткое описание (из SEO title Description)
+                        div
+                            a(href="#").btn.btn-primary.found-item__detail Подробнее
+            include ./templates/contacts/contacts.pug
+        footer
+            include ./templates/footer/footer.pug

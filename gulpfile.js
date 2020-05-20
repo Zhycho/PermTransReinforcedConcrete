@@ -23,7 +23,7 @@ const path = {
         fonts: 'build/assets/fonts/'
     },
     src: {
-        html: 'src/vacancies.pug',
+        html: 'src/constructor.pug',
         js: 'src/js/common.js',
         style: 'src/style/main.less',
         styleAll: 'src/**/*.less',
@@ -32,8 +32,8 @@ const path = {
         fonts: 'src/fonts/**/*.*'
     },
     watch: {
-        html: 'src/vacancies.pug',
-        htmlAll: 'src/**/*.pug',
+        html: 'src/*.pug',
+        htmlAll: 'src/**/constructor.pug',
         js: 'src/js/common.js',
         style: 'src/style/**/*.less',
         styleAll: 'src/**/*.less',

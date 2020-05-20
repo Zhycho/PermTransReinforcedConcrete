@@ -1,0 +1,121 @@
+.dealers-page-headline {
+    color: #bf272e;
+    font-size: 1rem;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+
+    @media (max-width: 768px) {
+        font-size: 0.9rem;
+        margin-bottom: 16px;
+        text-align: center;
+    }
+}
+
+.dealer {
+    display: flex;
+    margin-bottom: 16px;
+
+    @media (max-width: 768px) {
+        flex-wrap: wrap;
+    }
+}
+
+.dealer-logo {
+    margin-right: 24px;
+    max-width: 250px;
+
+    img {
+        display: block;
+        width: 100%;
+    }
+
+    @media (max-width: 768px) {
+        margin: 0 auto 12px;
+    }
+}
+
+.dealer-description {
+    
+    p {
+        font-size: 0.875rem;
+        font-weight: 400;
+        margin-bottom: 4px;
+    }
+
+    strong {
+        display: block;
+        font-size: 0.875rem;
+        font-weight: 700;
+        margin-bottom: 4px;
+    }
+
+    a {
+        color: #bf272e;
+        display: block;
+        font-size: 0.875rem;
+        font-weight: 400;
+        text-decoration: underline;
+        width: fit-content;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+    @media (max-width: 768px) {
+        width: 100%;
+    }
+}
+
+.dealers-page-subheadline {
+    font-size: 0.875rem;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+
+    @media (max-width: 768px) {
+        text-align: center;
+    }
+}
+
+.dealers-list {
+    margin-bottom: 24px;
+}
+
+.dealers-list__item {
+    background-color: #f6f6f6;
+    display: grid;
+    font-size: 0.875rem;
+    font-weight: 400;
+    gap: 8px;
+    grid-template-columns: 200px 1fr 2fr;
+    margin-bottom: 4px;
+    padding: 16px;
+
+    strong {
+        font-weight: 700;
+    }
+
+    a {
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    @media (max-width: 992px) {
+        grid-template-columns: 175px 1fr 1fr;
+    }
+
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        padding: 12px;
+        text-align: center;
+    }
+}
+
+.dealers-list__city {
+    color: #bf272e;
+    font-size: 0.875rem;
+    font-weight: 700;
+}

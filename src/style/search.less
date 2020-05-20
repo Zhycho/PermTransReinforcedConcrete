@@ -1,0 +1,136 @@
+.search-request {
+    align-items: center;
+    display: flex;
+    margin-bottom: 32px;
+
+    .headline.headline_page {
+        margin-bottom: 0;
+        margin-right: 56px;
+    }
+
+    @media (max-width: 768px) {
+        max-width: 450px;
+        margin: 0 auto 20px;
+
+        .headline.headline_page {
+            margin-right: 20px;
+            font-size: 1.25rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        flex-wrap: wrap;
+
+        .headline.headline_page {
+            margin-right: 8px;
+            font-size: 1.125rem;
+        }
+    }
+}
+
+.search-request__result {
+    font-size: 0.875rem;
+    font-weight: 400;
+    text-decoration: underline;
+
+    @media (max-width: 480px) {
+        width: 100%;
+    }
+}
+
+.found-item {
+    align-items: center;
+    background-color: #f5f5f6;
+    display: grid;
+    grid-template-columns: 2fr 2fr 1fr;
+    margin-bottom: 8px;
+    min-height: 125px;
+    position: relative;
+
+    div {
+
+        &:nth-of-type(1) {
+            align-items: center;
+            display: flex;
+        }
+
+        &:nth-of-type(2) {
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.875rem;
+            font-weight: 400;
+
+            .found-item__price {
+                font-size: 1.25rem;
+                font-weight: 700;
+            }
+        }
+
+        &:nth-of-type(3) {
+            padding: 0 20px;
+        }
+    }
+
+    &:last-of-type {
+        margin-bottom: 0;
+    }
+
+    @media (max-width: 768px) {
+        max-width: 450px;
+        margin: 0 auto 12px;
+        grid-template-columns: 1fr;
+
+        div {
+
+            &:nth-of-type(1) {
+                min-height: 80px;
+            }
+
+            &:nth-of-type(2) {
+                padding: 8px 12px;
+            }
+
+            &:nth-of-type(3) {
+                padding: 0;
+            }
+        }
+    }
+}
+
+.found-item__headline {
+    font-size: 1rem;
+    font-weight: 400;
+    padding: 0 28px;
+
+    @media (max-width: 992px) {
+        padding: 0 16px;
+    }
+}
+
+.found-item__label {
+    background-color: #bf272e;
+    color: #FFF;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    left: 0;
+    padding: 4px 8px;
+    position: absolute;
+    top: 0;
+    width: 125px;
+}
+
+.found-item__img {
+
+    img {
+        display: block;
+        height: 125px;
+        object-fit: cover;
+        width: 125px;
+    }
+}
+
+.found-item__detail {
+    text-transform: none;
+    width: 100%;
+}

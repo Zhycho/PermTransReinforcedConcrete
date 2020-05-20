@@ -1,0 +1,138 @@
+.practice-internship-slider {
+    margin-bottom: 44px;
+}
+
+.practice-internship-slider-item {
+
+    img {
+        height: 440px;
+        object-fit: cover;
+        width: 100%;
+    }
+
+    @media (max-width: 1200px) {
+        img {
+            height: 340px;
+        }
+    }
+
+    @media (max-width: 992px) {
+        img {
+            height: 300px;
+        }
+    }
+
+    @media (max-width: 576px) {
+        img {
+            height: 250px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        img {
+            height: 220px;
+        }
+    }
+}
+
+.practice-internship-form {
+    background: url(../img/form-main-back.png);
+    background-size: cover;
+    padding: 52px 20px 80px;
+
+    form {
+        margin: 0 auto;
+        max-width: 640px;    
+    }
+
+    @media (max-width: 480px) {
+        padding: 24px 12px 24px;
+    } 
+}
+
+.practice-internship-form__headline {
+    font-size: 2.25rem;
+    margin-bottom: 32px;
+    text-align: center;
+    text-transform: uppercase;
+
+    @media (max-width: 992px) {
+        font-size: 1.75rem;
+    }
+
+    @media (max-width: 576px) {
+        font-size: 1.5rem;
+    }
+
+    @media (max-width: 480px) {
+        font-size: 1rem;
+        margin-bottom: 24px;
+    }
+}
+
+.practice-internship-form__input-default {
+    margin-bottom: 24px;
+
+    @media (max-width: 480px) {
+        margin-bottom: 12px;
+    }
+}
+
+.practice-internship-form__textarea-default {
+    margin-bottom: 16px;
+}
+
+.practice-internship-form__input-checkbox {
+    margin-bottom: 12px;
+}
+
+.practice-internship-form__submits {
+    display: flex;
+    margin: 0 -1.5px;
+    position: relative;
+
+    label {
+        background-color: #bf272e;
+        border: 1px solid #bf272e;
+        color: #FFF;
+        cursor: pointer;
+        font-size: 0.75rem;
+        font-weight: 400;
+        margin: 0 1.5px;
+        padding: 8px;
+        transition: .2s all ease-in-out;
+        width: calc(50% - 3px);
+
+        strong {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        &:hover {
+            color: #bf272e;
+            background-color: #FFF;
+        }
+    }
+    
+    input {
+        left: 0;
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        width: 0;
+    }
+
+    @media (max-width: 576px) {
+        flex-wrap: wrap;
+
+        label {
+            width: calc(100% - 3px);
+
+            &:nth-of-type(1) {
+                margin-bottom: 4px;
+            }
+        }
+    }
+}

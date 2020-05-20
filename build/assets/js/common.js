@@ -116,8 +116,17 @@ $(document).ready(function() {
         ]
     });
 
-    // Слайдер индивидуальных продуктов
+    // Слайдер вакансий
     $('.js--vacancies-slider').slick({
+        infinite: false,
+        slidesToShow: 1,
+        dots: true,
+        slidesToScroll: 1,
+        arrows: false,
+    });
+
+    // Слайдер практики и стажировки
+    $('.js--practice-internship-slider').slick({
         infinite: false,
         slidesToShow: 1,
         dots: true,
@@ -138,6 +147,5 @@ $(document).ready(function() {
 
     // Инициализация тултипов в продукте
     tippy('[data-tippy-content]');
-
 
 });

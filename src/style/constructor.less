@@ -1,0 +1,106 @@
+.headline.headline_constructor {
+    display: block;
+    text-align: center;
+}
+
+.constructor-block {
+
+    &.constructor-block_gray {
+        background-color: #919191;
+        color: #FFF;
+
+        .constructor-block__input {
+
+            div:nth-of-type(2) input {
+                border-color: #FFF;
+                color: #FFF;
+
+                &::placeholder {
+                    color: #d7d7d7;
+                }
+            }
+
+            &::after {
+                background-image: url(../img/constructor-input-border_gray.png);
+                content: "";
+                display: block;
+                height: 1px;
+                left: 0;
+                position: absolute;
+                top: 0;
+                width: calc(100% + 150px);
+            }
+        }
+    }
+}
+
+.constructor-block__headline-wrapper {
+    align-items: center;
+    display: grid;
+    gap: 24px;
+    grid-template-columns: 340px 1fr;
+    max-width: 1150px;
+    padding: 16px 20px;
+}
+
+.constructor-block__headline-number {
+    font-size: 1.875rem;
+    text-align: end;
+}
+
+.constructor-block__headline {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+}
+
+.constructor-block__description {
+    align-items: center;
+    display: grid;
+    gap: 24px;
+    grid-template-columns: 340px 1fr;
+    max-width: 1150px;
+    padding: 16px 20px;
+
+    p {
+        font-size: 0.875rem;
+        font-weight: 400;
+    }
+}
+
+.constructor-block__input-list {
+    overflow: hidden;
+}
+
+.constructor-block__input {
+    align-items: center;
+    display: grid;
+    gap: 24px;
+    grid-template-columns: 340px 1fr;
+    max-width: 1150px;
+    padding: 16px 20px;
+    position: relative;
+
+    div {
+
+        &:nth-of-type(1) {
+            text-align: end;
+        
+            label {
+                font-size: 1rem;
+                font-weight: 400;
+            }
+        }
+
+        &:nth-of-type(2) {
+
+            input {
+                background-color: transparent;
+                border: 1px solid;
+                font-size: 1rem;
+                height: 45px;
+                padding: 0 12px;
+                width: 100%;
+            }
+        }
+    }
+}
