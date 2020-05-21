@@ -140,12 +140,19 @@ $(document).ready(function() {
         $(this).toggleClass('active');
     });
 
+    // Развернуть заказ в оформлении
+    $('.js--order-table-opener').on('click', function(){
+        $('.js--order-table-wrapper').toggleClass('active');
+    });
+
     // Открывашка сайд-меню на мобилке
     $('.js--aside-nav__show-nav').on('click', function(){
         $('.js--aside-nav').toggleClass('active');
     });
 
+    // Инициализация селектов
+    $('.js--select-search').select2();
+
     // Инициализация тултипов в продукте
     tippy('[data-tippy-content]');
-
 });

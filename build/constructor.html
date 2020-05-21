@@ -5,10 +5,12 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
 		<title>ПермТрансЖелезоБетон</title>
-		<link rel="stylesheet" href="assets/css/bootstrap.css">
+		<link rel="stylesheet" href="assets/css/bootstrap.css"><link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
 		<link rel="stylesheet" href="assets/css/mainstyle.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-		<script src="assets/js/slick.min.js"></script>
+		<script src="assets/js/slick.min.js"></script><script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+<script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+<script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
 		<script src="assets/js/bootstrap.js"></script>
 		<script src="assets/js/common.js"></script>
 	</head>
@@ -88,21 +90,93 @@
 					<ul class="constructor-block__input-list">
 						<li class="constructor-block__input">
 							<div>
-								<label for="">Выберите тип блока:</label>
+								<label for="type-block">Выберите тип блока:</label>
 							</div>
 							<div>
-								<input type="text" placeholder="Блок | (600*300*188)">
+								<select class="js--select-search" name="" id="type-block">
+									<option value="">Блок | (600*300*188)</option>
+									<option value="">Блок | (500*300*188)</option>
+									<option value="">Блок | (400*300*188)</option>
+								</select>
 							</div>
 						</li>
 						<li class="constructor-block__input">
 							<div>
-								<label for="">Введите общую длину </label>
+								<label for="wall-length">Введите общую длину стен, м.:</label>
 							</div>
 							<div>
-								<input type="text">
+								<input type="text" placeholder="18.00" id="wall-length">
+							</div>
+						</li>
+						<li class="constructor-block__input">
+							<div>
+								<label for="wall-height">Введите среднюю высоту стены, м.:</label>
+							</div>
+							<div>
+								<input type="text" placeholder="18.00" id="wall-height">
+							</div>
+						</li>
+						<li class="constructor-block__input">
+							<div>
+								<label for="wall-square">Введите общую площадь проёмов, кв. м.:</label>
+							</div>
+							<div>
+								<input type="text" placeholder="4.00" id="wall-square">
 							</div>
 						</li>
 					</ul>
+					<div class="constructor-block__button-wrapper">
+						<div></div>
+						<div><a class="btn btn-primary constructor-block__button" href="javascript:;">Рассчитать</a></div>
+					</div>
+				</div>
+				<div class="constructor-block constructor-block_white">
+					<div class="constructor-block__headline-wrapper"><span class="constructor-block__headline-number">02</span>
+						<h2 class="constructor-block__headline">Результаты расчёта по объёму </h2>
+					</div>
+					<ul class="constructor-block__input-list">
+						<li class="constructor-block__input">
+							<div>
+								<label for="">Вам потребуется, куб. м. газобетона</label>
+							</div>
+							<div>
+								<input type="text" placeholder="... куб. м. газобетона" disabled>
+							</div>
+						</li>
+						<li class="constructor-block__input">
+							<div>
+								<label for="">с учётом запаса 5% на подрезку, газобетонных блоков</label>
+							</div>
+							<div>
+								<input type="text" placeholder="... куб. м. газобетона" disabled>
+							</div>
+						</li>
+					</ul>
+					<div class="constructor-block__headline-wrapper"><span class="constructor-block__headline-number">03</span>
+						<h2 class="constructor-block__headline">Кратный поддонам расчёт</h2>
+					</div>
+					<ul class="constructor-block__input-list">
+						<li class="constructor-block__input">
+							<div>
+								<label for="">Потребуется поддонов, шт.</label>
+							</div>
+							<div>
+								<input type="text" placeholder="... куб. м. газобетона" disabled>
+							</div>
+						</li>
+						<li class="constructor-block__input">
+							<div>
+								<label for="">газобетонных блоков, шт.</label>
+							</div>
+							<div>
+								<input type="text" placeholder="... куб. м. газобетона" disabled>
+							</div>
+						</li>
+					</ul>
+					<div class="constructor-block__button-wrapper">
+						<div></div>
+						<div><a class="btn btn-primary constructor-block__button" href="javascript:;">Добавить в заказ</a></div>
+					</div>
 				</div>
 			</div>
 			<div class="contacts-block">

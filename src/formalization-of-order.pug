@@ -1,0 +1,176 @@
+doctype html
+html(lang="ru")
+    head
+        include ./templates/head/head.pug
+    body
+        header
+            include ./templates/header/header.pug
+        main
+            .container.container_page
+                include ./templates/breadcrumb/breadcrumb.pug
+                h1.headline.headline_page Оформление заявки №34567
+                .order-table-wrapper.js--order-table-wrapper
+                    .order-table-headline
+                        h2 Ваша заявка
+                        a(href="javascript:;").js--order-table-opener
+                            span Развернуть
+                            span Свернуть
+                    .order-table
+                        ul.basket-products-list
+                            li.basket-item
+                                .basket-table-header
+                                    .basket-table-header__img
+                                        img(src="assets/img/product_01.png", alt="")
+                                    h3.basket-table-header__title Зимние закупки 2020 <br/> Бетонное изделие ПДНм-Ат 800-55(55а)
+                                .basket-table
+                                    .table-line.table-line_headline
+                                        div
+                                            span Марка
+                                        div
+                                            span Цена" руб/за шт.
+                                        div
+                                            span Кол-во
+                                        div
+                                            span Стоимость
+                                    .table-line
+                                        div
+                                            span ПДНм-Ат   800-55(55а)
+                                        div
+                                            span 1,680 руб./шт.
+                                        div
+                                            span 1
+                                        div.table-price
+                                            span 2 352 &#8381;
+                                ul.basket-table-mobile
+                                    li
+                                        span.basket-table-mobile__headline ПДНм-Ат 800-55(55а)
+                                        ul.basket-table-mobile__description
+                                            li
+                                                span Габариты (длина x высота x толщина)
+                                                span 6,0х2,0х0,14
+                                            li
+                                                span Цена" руб/за шт.
+                                                span 1,680 руб./шт.
+                                            li
+                                                span Кол-во
+                                                span 1
+                                            li
+                                                span Стоимость
+                                                span.table-price-mobile 2 352 &#8381;
+                                    li
+                                        span.basket-table-mobile__headline ПДНм-Ат 800-55(55а)
+                                        ul.basket-table-mobile__description
+                                            li
+                                                span Габариты (длина x высота x толщина)
+                                                span 6,0х2,0х0,14
+                                            li
+                                                span Цена" руб/за шт.
+                                                span 1,680 руб./шт.
+                                            li
+                                                span Кол-во
+                                                span 1
+                                            li
+                                                span Стоимость
+                                                span.table-price-mobile 2 352 &#8381;
+                        h2.basket-complect-list-headline Проекты
+                        ul.basket-complect-list
+                            li.basket-item
+                                .basket-table-header
+                                    .basket-table-header__img
+                                        img(src="assets/img/house-Betosha.png", alt="")
+                                    h3.basket-table-header__title Дом «Бетоша»
+                                .basket-table
+                                    .table-line.table-line_headline
+                                        div
+                                            span Марка
+                                        div
+                                            span Цена" руб/за шт.
+                                        div
+                                            span Кол-во
+                                        div
+                                            span Стоимость
+                                    .table-line
+                                        div
+                                            span ПДНм-Ат   800-55(55а)
+                                        div
+                                            span 1,680 руб./шт.
+                                        div
+                                            span 1
+                                        div.table-price
+                                            span 2 352 &#8381;
+                                ul.basket-table-mobile
+                                    li
+                                        span.basket-table-mobile__headline ПДНм-Ат 800-55(55а)
+                                        ul.basket-table-mobile__description
+                                            li
+                                                span Габариты (длина x высота x толщина)
+                                                span 6,0х2,0х0,14
+                                            li
+                                                span Цена" руб/за шт.
+                                                span 1,680 руб./шт.
+                                            li
+                                                span Кол-во
+                                                span 1
+                                            li
+                                                span Стоимость
+                                                span.table-price-mobile 2 352 &#8381;
+                                .complect-table__price.complect-table__price_gray
+                                    div
+                                        span Общая стоимость:
+                                    div
+                                        span 2 352 &#8381;
+                                .complect-table__price.complect-table__price_red
+                                    div
+                                        span Общая стоимость заказа:
+                                    div
+                                        span 2 352 &#8381;
+                form(action="")
+                    fieldset.formalization-of-order-item
+                        h2.formalization-of-order__subheadline Ваши данные для заявки
+                        .formalization-of-order-data
+                            div
+                                label.input-default.formalization-of-order-data__input-default
+                                    input(type="text", name="" placeholder="Имя *" required)
+                                    span.red-square
+                                label.input-default.formalization-of-order-data__input-default
+                                    input(type="tel", name="" placeholder="Телефон *" required)
+                                    span.red-square
+                                label.input-default.formalization-of-order-data__input-default
+                                    input(type="email", name="" placeholder="E-mail *" required)
+                                    span.red-square
+                            div
+                                label.textarea-default.formalization-of-order-data__textarea-default
+                                    textarea(name="", cols="30", rows="10" placeholder="Комментарий")
+                                    span.red-square
+                    fieldset.formalization-of-order-item
+                        h2.formalization-of-order__subheadline Доставка
+                        .formalization-of-order-delivery
+                            div
+                                label.input-switch
+                                    input(type="checkbox", name="")
+                                    div
+                                        div
+                                    span
+                                        span Да 
+                                        | / 
+                                        span Нет
+                            div.formalization-of-order-delivery__description
+                                span Самовывоз, забрать можно со склада по адресу:
+                                    strong Пермский край, п. Оверята, ул. Комсомольская, 2
+                                span *Стоимость и условия доставки подготовят наши менеджеры. Выберите город:
+                        .formalization-of-order-choose-city
+                            .formalization-of-order-choose-city-headline
+                                div
+                                    select.js--select-search
+                                        option(value="" disabled) Выберите ваш город из списка
+                                        option(value="") Пермь
+                                        option(value="") Москва
+                                        option(value="") Санкт-петерубрг
+                                div
+                                    span Или выберите город на карте
+                            .formalization-of-order-choose-city-map
+                                <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A7e4a97dade22551bcc174575fa7d6a7cf8ffe4e45db623d0878c4320c318e632&amp;width=100%25&amp;height=540px&amp;lang=ru_RU&amp;scroll=false"></script>
+
+            include ./templates/contacts/contacts.pug
+        footer
+            include ./templates/footer/footer.pug
