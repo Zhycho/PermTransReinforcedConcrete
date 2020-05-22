@@ -1,0 +1,133 @@
+.history-headline {
+    position: relative;
+    z-index: 5;
+}
+
+.history-slider-wrapper {
+    position: relative;
+}
+
+.history-slider {
+    background-color: #f8f8f8;
+    margin-top: -143px;
+}
+
+.history-slider-item {
+    height: 500px;
+    position: relative;
+}
+
+.history-slider-img {
+    height: 500px;
+    position: absolute;
+    right: 0;
+    width: 55%;
+
+    img {
+        display: block;
+        height: 500px;
+        object-fit: cover;
+        width: 100%;
+    }
+}
+
+.history-slider-content {
+    background-color: #f8f8f8;
+    height: 500px;
+    padding-top: 143px;
+    position: relative;
+    width: 600px;
+    z-index: 1;
+
+    &::after {
+        background-image: url(../img/history-back.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        content: "";
+        display: block;
+        height: 500px;
+        left: 100%;
+        position: absolute;
+        top: 0;
+        width: 140px;
+    }
+}
+
+.history-slider-item__year {
+    color: #bf272e;
+    display: block;
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 36px;
+}
+
+.history-slider-item__headline {
+    font-size: 0.875rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    max-height: 34px;
+    overflow: hidden;
+}
+
+.history-slider-item__description {
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 24px;
+    max-height: 72px;
+    overflow: hidden;
+}
+
+.history-slider-nav {
+    bottom: 48px;
+    display: flex;
+    left: calc(50% - 630px);
+    position: absolute;
+    z-index: 5;
+
+    a {
+        align-items: center;
+        display: flex;
+        fill: #989898;
+        height: 32px;
+        justify-content: center;
+        transition: all 0.2s ease-in-out;
+        width: 32px;
+
+        &:hover {
+            fill: #28272d;
+        }
+    }
+}
+
+.history-timeline {
+    padding: 72px 0 52px;
+    position: relative;
+
+    img {
+        margin: 0 auto;
+        display: block;
+    }
+}
+
+.history-timeline__list {
+    height: 3px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 79px;
+    width: 920px;
+
+    li {
+        bottom: -1px;
+        left: 7%;
+        position: absolute;
+
+        a {
+            background-color: #bf272e;
+            border-radius: 50%;
+            display: block;
+            height: 7px;
+            width: 7px;
+        }
+    }
+}

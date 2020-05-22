@@ -6,10 +6,11 @@
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
 		<title>ПермТрансЖелезоБетон</title>
 		<link rel="stylesheet" href="assets/css/bootstrap.css"><link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="assets/css/jquery.mmenu.all.css">
 		<link rel="stylesheet" href="assets/css/mainstyle.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<script src="assets/js/slick.min.js"></script><script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
-<script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+		<script src="assets/js/jquery.mmenu.all.min.js"></script><script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
 <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
 		<script src="assets/js/bootstrap.js"></script>
 		<script src="assets/js/common.js"></script>
@@ -31,19 +32,19 @@
 					<div class="header__mid-bottom">
 						<nav class="header__nav">
 							<ul>
-								<li><a href="">Компания</a></li>
-								<li><a href="">Продукция</a>
+								<li><a href="about.html">Компания</a></li>
+								<li><a href="catalog.html">Продукция</a>
 									<ul class="header__subnav">
 										<li><a href="">ЖБИ</a></li>
 										<li><a href="">Газоблок</a></li>
 									</ul>
 								</li>
-								<li><a href="">Акции</a></li>
+								<li><a href="stocks.html">Акции</a></li>
 								<li><a href="">Клиентам</a></li>
 								<li><a href="">Поставщикам</a></li>
-								<li><a href="">Карьера</a></li>
-								<li><a href="">Контакты</a></li>
-								<li><a href="">Блог</a></li>
+								<li><a href="vacancies.html">Карьера</a></li>
+								<li><a href="contacts.html">Контакты</a></li>
+								<li><a href="blog.html">Блог</a></li>
 							</ul>
 						</nav>
 					</div>
@@ -66,7 +67,7 @@
 						</form><a class="header__double-btn-text" href="">Скачать прайс лист</a>
 					</div>
 				</div>
-				<div class="header__burger"><a href=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18px" height="18px"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg></a></div>
+				<div class="header__burger"><a class="js--burger" href="javascript:;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18px" height="18px"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg></a></div>
 			</div>
 		</header>
 		<main>
@@ -76,7 +77,7 @@
 <li class="breadcrumb-item active" aria-current="page">Продукция</li>
 </ol>
 </nav>
-				<h1 class="headline headline_page">Оформление заявки №34567</h1>
+				<h1 class="headline headline_page headline_formalization-of-order">Оформление заявки №34567</h1>
 				<div class="order-table-wrapper js--order-table-wrapper">
 					<div class="order-table-headline">
 						<h2>Ваша заявка</h2><a class="js--order-table-opener" href="javascript:;"><span>Развернуть</span><span>Свернуть</span></a>
@@ -187,11 +188,11 @@
 							</div>
 						</div>
 					</fieldset>
-					<fieldset class="formalization-of-order-item">
+					<fieldset class="formalization-of-order-item js--formalization-delivery formalization-delivery">
 						<h2 class="formalization-of-order__subheadline">Доставка</h2>
 						<div class="formalization-of-order-delivery">
 							<div>
-								<label class="input-switch">
+								<label class="input-switch js--formalization-delivery-switch">
 									<input type="checkbox" name="">
 									<div>
 										<div></div>
@@ -204,7 +205,7 @@
 							<div class="formalization-of-order-choose-city-headline">
 								<div>
 									<select class="js--select-search">
-										<option value="" disabled>Выберите ваш город из списка</option>
+										<option value="" disabled>Выберите ваш город из списка или введите в поиске</option>
 										<option value="">Пермь</option>
 										<option value="">Москва</option>
 										<option value="">Санкт-петерубрг</option>
@@ -215,6 +216,196 @@
 							<div class="formalization-of-order-choose-city-map"><script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A7e4a97dade22551bcc174575fa7d6a7cf8ffe4e45db623d0878c4320c318e632&amp;width=100%25&amp;height=540px&amp;lang=ru_RU&amp;scroll=false"></script></div>
 						</div>
 					</fieldset>
+					<fieldset class="formalization-of-order-item js--formalization-storage formalization-storage">
+						<h2 class="formalization-of-order__subheadline">Бесплатное хранение</h2>
+						<div class="formalization-of-order-storage">
+							<div>
+								<div class="formalization-of-order-storage__header">
+									<label class="input-switch js--formalization-storage-switch">
+										<input type="checkbox" name="">
+										<div>
+											<div></div>
+										</div><span><span>Да </span>/ <span>Нет</span></span>
+									</label>
+								</div>
+								<div class="formalization-of-order-storage__description"><span>Выберите желаемую дату окончания бесплатного хранения:</span></div>
+							</div>
+							<div>
+								<div class="formalization-of-order-storage__slider-header">
+									<div><a class="js--formalization-of-order-storage__slider-prev" href="javascript:;"><</a><span>Апрель 2020</span><a class="js--formalization-of-order-storage__slider-next" href="javascript:;">></a></div>
+								</div>
+								<ul class="formalization-of-order-storage__slider js--formalization-of-order-storage__slider">
+									<li class="formalization-of-order-storage__slider-item">
+										<label>
+											<input type="radio" name="date"><span>Пн</span><span>10</span>
+										</label>
+									</li>
+									<li class="formalization-of-order-storage__slider-item">
+										<label>
+											<input type="radio" name="date"><span>Вт</span><span>11</span>
+										</label>
+									</li>
+									<li class="formalization-of-order-storage__slider-item">
+										<label>
+											<input type="radio" name="date"><span>Ср</span><span>12</span>
+										</label>
+									</li>
+									<li class="formalization-of-order-storage__slider-item">
+										<label>
+											<input type="radio" name="date"><span>Чт</span><span>13</span>
+										</label>
+									</li>
+									<li class="formalization-of-order-storage__slider-item">
+										<label>
+											<input type="radio" name="date"><span>Пт</span><span>14</span>
+										</label>
+									</li>
+									<li class="formalization-of-order-storage__slider-item">
+										<label>
+											<input type="radio" name="date"><span>Сб</span><span>15</span>
+										</label>
+									</li>
+									<li class="formalization-of-order-storage__slider-item">
+										<label>
+											<input type="radio" name="date"><span>Вс</span><span>16</span>
+										</label>
+									</li>
+									<li class="formalization-of-order-storage__slider-item">
+										<label>
+											<input type="radio" name="date"><span>Пн</span><span>17</span>
+										</label>
+									</li>
+									<li class="formalization-of-order-storage__slider-item">
+										<label>
+											<input type="radio" name="date"><span>Вт</span><span>18</span>
+										</label>
+									</li>
+									<li class="formalization-of-order-storage__slider-item">
+										<label>
+											<input type="radio" name="date"><span>Ср</span><span>19</span>
+										</label>
+									</li>
+									<li class="formalization-of-order-storage__slider-item">
+										<label>
+											<input type="radio" name="date"><span>Чт</span><span>20</span>
+										</label>
+									</li>
+									<li class="formalization-of-order-storage__slider-item">
+										<label>
+											<input type="radio" name="date"><span>Пт</span><span>21</span>
+										</label>
+									</li>
+									<li class="formalization-of-order-storage__slider-item">
+										<label>
+											<input type="radio" name="date"><span>Сб</span><span>22</span>
+										</label>
+									</li>
+									<li class="formalization-of-order-storage__slider-item">
+										<label>
+											<input type="radio" name="date"><span>Вс</span><span>23</span>
+										</label>
+									</li>
+									<li class="formalization-of-order-storage__slider-item">
+										<label>
+											<input type="radio" name="date"><span>Пн</span><span>24</span>
+										</label>
+									</li>
+									<li class="formalization-of-order-storage__slider-item">
+										<label>
+											<input type="radio" name="date"><span>Вт</span><span>25</span>
+										</label>
+									</li>
+									<li class="formalization-of-order-storage__slider-item">
+										<label>
+											<input type="radio" name="date"><span>Ср</span><span>26</span>
+										</label>
+									</li>
+									<li class="formalization-of-order-storage__slider-item">
+										<label>
+											<input type="radio" name="date"><span>Чт</span><span>27</span>
+										</label>
+									</li>
+									<li class="formalization-of-order-storage__slider-item">
+										<label>
+											<input type="radio" name="date"><span>Пт</span><span>28</span>
+										</label>
+									</li>
+									<li class="formalization-of-order-storage__slider-item">
+										<label>
+											<input type="radio" name="date"><span>Сб</span><span>29</span>
+										</label>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</fieldset>
+					<fieldset class="formalization-of-order-item">
+						<h2 class="formalization-of-order__subheadline">Способ оплаты</h2>
+						<div class="formalization-of-order-payment">
+							<div>
+								<ul class="formalization-of-order-payment-list">
+									<li class="formalization-of-order-payment-list__item">
+										<label>
+											<input type="radio" name="payment" checked><span>Онлайн</span><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="20px">
+<path fill-rule="evenodd"  fill="rgb(236, 63, 71)" d="M24.000,2.952 C23.976,3.556 23.741,4.207 23.243,4.753 C20.317,7.967 17.395,11.182 14.470,14.395 C12.840,16.186 11.201,17.969 9.580,19.769 C9.334,20.042 9.178,20.104 8.894,19.810 C6.212,17.032 3.503,14.281 0.832,11.492 C-0.688,9.904 -0.066,7.342 1.951,6.758 C3.024,6.447 3.957,6.749 4.739,7.547 C6.059,8.896 7.380,10.244 8.679,11.615 C9.000,11.954 9.181,11.968 9.507,11.608 C12.724,8.056 15.954,4.516 19.193,0.986 C20.300,-0.221 21.848,-0.332 23.016,0.664 C23.627,1.184 24.002,2.004 24.000,2.952 Z"/>
+</svg>
+										</label>
+									</li>
+									<li class="formalization-of-order-payment-list__item">
+										<label>
+											<input type="radio" name="payment"><span>По счёту</span><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="20px">
+<path fill-rule="evenodd"  fill="rgb(236, 63, 71)" d="M24.000,2.952 C23.976,3.556 23.741,4.207 23.243,4.753 C20.317,7.967 17.395,11.182 14.470,14.395 C12.840,16.186 11.201,17.969 9.580,19.769 C9.334,20.042 9.178,20.104 8.894,19.810 C6.212,17.032 3.503,14.281 0.832,11.492 C-0.688,9.904 -0.066,7.342 1.951,6.758 C3.024,6.447 3.957,6.749 4.739,7.547 C6.059,8.896 7.380,10.244 8.679,11.615 C9.000,11.954 9.181,11.968 9.507,11.608 C12.724,8.056 15.954,4.516 19.193,0.986 C20.300,-0.221 21.848,-0.332 23.016,0.664 C23.627,1.184 24.002,2.004 24.000,2.952 Z"/>
+</svg>
+										</label>
+									</li>
+									<li class="formalization-of-order-payment-list__item">
+										<label>
+											<input type="radio" name="payment"><span>В офисе: г. Пермь, ул. Ленина, д. 69</span><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="20px">
+<path fill-rule="evenodd"  fill="rgb(236, 63, 71)" d="M24.000,2.952 C23.976,3.556 23.741,4.207 23.243,4.753 C20.317,7.967 17.395,11.182 14.470,14.395 C12.840,16.186 11.201,17.969 9.580,19.769 C9.334,20.042 9.178,20.104 8.894,19.810 C6.212,17.032 3.503,14.281 0.832,11.492 C-0.688,9.904 -0.066,7.342 1.951,6.758 C3.024,6.447 3.957,6.749 4.739,7.547 C6.059,8.896 7.380,10.244 8.679,11.615 C9.000,11.954 9.181,11.968 9.507,11.608 C12.724,8.056 15.954,4.516 19.193,0.986 C20.300,-0.221 21.848,-0.332 23.016,0.664 C23.627,1.184 24.002,2.004 24.000,2.952 Z"/>
+</svg>
+										</label>
+									</li>
+									<li class="formalization-of-order-payment-list__item">
+										<label>
+											<input type="radio" name="payment"><span>На заводе: пос. Оверята, ул. Комсомольской, д. 2</span><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="20px">
+<path fill-rule="evenodd"  fill="rgb(236, 63, 71)" d="M24.000,2.952 C23.976,3.556 23.741,4.207 23.243,4.753 C20.317,7.967 17.395,11.182 14.470,14.395 C12.840,16.186 11.201,17.969 9.580,19.769 C9.334,20.042 9.178,20.104 8.894,19.810 C6.212,17.032 3.503,14.281 0.832,11.492 C-0.688,9.904 -0.066,7.342 1.951,6.758 C3.024,6.447 3.957,6.749 4.739,7.547 C6.059,8.896 7.380,10.244 8.679,11.615 C9.000,11.954 9.181,11.968 9.507,11.608 C12.724,8.056 15.954,4.516 19.193,0.986 C20.300,-0.221 21.848,-0.332 23.016,0.664 C23.627,1.184 24.002,2.004 24.000,2.952 Z"/>
+</svg>
+										</label>
+									</li>
+									<li class="formalization-of-order-payment-list__item">
+										<label>
+											<input type="radio" name="payment"><span>В рассрочку</span><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="20px">
+<path fill-rule="evenodd"  fill="rgb(236, 63, 71)" d="M24.000,2.952 C23.976,3.556 23.741,4.207 23.243,4.753 C20.317,7.967 17.395,11.182 14.470,14.395 C12.840,16.186 11.201,17.969 9.580,19.769 C9.334,20.042 9.178,20.104 8.894,19.810 C6.212,17.032 3.503,14.281 0.832,11.492 C-0.688,9.904 -0.066,7.342 1.951,6.758 C3.024,6.447 3.957,6.749 4.739,7.547 C6.059,8.896 7.380,10.244 8.679,11.615 C9.000,11.954 9.181,11.968 9.507,11.608 C12.724,8.056 15.954,4.516 19.193,0.986 C20.300,-0.221 21.848,-0.332 23.016,0.664 C23.627,1.184 24.002,2.004 24.000,2.952 Z"/>
+</svg>
+										</label>
+									</li>
+									<li class="formalization-of-order-payment-list__item">
+										<label>
+											<input type="radio" name="payment"><span>В кредит</span><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="20px">
+<path fill-rule="evenodd"  fill="rgb(236, 63, 71)" d="M24.000,2.952 C23.976,3.556 23.741,4.207 23.243,4.753 C20.317,7.967 17.395,11.182 14.470,14.395 C12.840,16.186 11.201,17.969 9.580,19.769 C9.334,20.042 9.178,20.104 8.894,19.810 C6.212,17.032 3.503,14.281 0.832,11.492 C-0.688,9.904 -0.066,7.342 1.951,6.758 C3.024,6.447 3.957,6.749 4.739,7.547 C6.059,8.896 7.380,10.244 8.679,11.615 C9.000,11.954 9.181,11.968 9.507,11.608 C12.724,8.056 15.954,4.516 19.193,0.986 C20.300,-0.221 21.848,-0.332 23.016,0.664 C23.627,1.184 24.002,2.004 24.000,2.952 Z"/>
+</svg>
+										</label>
+									</li>
+								</ul>
+							</div>
+							<div>
+								<div class="formalization-of-order-payment__headline"><span>Принимаемые к оплате карты:</span></div>
+								<ul class="formalization-of-order-payment-type">
+									<li class="formalization-of-order-payment-type__item"><img src="assets/img/payment_visa.png" alt=""></li>
+									<li class="formalization-of-order-payment-type__item"><img src="assets/img/payment_visa.png" alt=""></li>
+									<li class="formalization-of-order-payment-type__item"><img src="assets/img/payment_visa.png" alt=""></li>
+								</ul>
+								<div class="formalization-of-order-payment__description">
+									<p>По результатам обработки заказ вам на указанную почту будет выслан электронный счет, в виде ссылки, перейдя по которой вы сможете оплатить ваш заказ. </p>
+									<p>*Предварительно будет звонок от менеджера, для согласования стоимости доставки.</p>
+								</div>
+							</div>
+						</div>
+					</fieldset>
+					<label class="input-checkbox formalization-of-order__input-checkbox">
+						<input type="checkbox" name="" required><span>Я согласен с политикой конфиденциальности и даю согласие на обработку моих персональных данных</span>
+					</label>
+					<input class="btn btn-primary btn-lg formalization-of-order__input-submit" type="submit" value="Отправить заявку">
 				</form>
 			</div>
 			<div class="contacts-block">
@@ -241,6 +432,23 @@
 					</ul>
 				</address><script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A7e4a97dade22551bcc174575fa7d6a7cf8ffe4e45db623d0878c4320c318e632&amp;width=100%25&amp;height=540px&amp;lang=ru_RU&amp;scroll=false"></script>
 			</div>
+			<nav id="mobile-burger-menu">
+				<ul>
+					<li><a href="about.html">Компания</a></li>
+					<li><a href="catalog.html">Продукция</a>
+						<ul>
+							<li><a href="">ЖБИ</a></li>
+							<li><a href="">Газоблок</a></li>
+						</ul>
+					</li>
+					<li><a href="stocks.html">Акции</a></li>
+					<li><a href="">Клиентам</a></li>
+					<li><a href="">Поставщикам</a></li>
+					<li><a href="vacancies.html">Карьера</a></li>
+					<li><a href="contacts.html">Контакты</a></li>
+					<li><a href="blog.html">Блог</a></li>
+				</ul>
+			</nav>
 		</main>
 		<footer>
 			<div class="footer">

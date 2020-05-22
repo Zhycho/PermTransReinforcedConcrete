@@ -133,7 +133,41 @@ $(document).ready(function() {
         slidesToScroll: 1,
         arrows: false,
     });
+    // Слайдер истории
+    $('.js--history-slider').slick({
+        infinite: false,
+        slidesToShow: 1,
+        dots: false,
+        slidesToScroll: 1,
+        arrows: true,
+        prevArrow: $('.js--history-slider__prev'),
+        nextArrow: $('.js--history-slider__next'),
+    });
 
+    // counter
+    function plusCounter(element){
+      let input = $(element).closest('div').find('input');
+      input.val(parseInt(input.val())+1);
+      input.change();
+    }
+    
+    function minusCounter(element){
+        let input = $(element).closest('.counter').find('input');
+        if (parseInt(input.val()) > 1) {
+            input.val(parseInt(input.val())-1);
+            input.change();
+        }
+    }
+    
+    $(document).on('click','.counter__more', function() {
+        plusCounter(this);
+        return false;
+    });
+    
+    $(document).on('click','.counter__less', function() {
+        minusCounter(this);
+        return false;
+    });
 
     // Поиск в хедере
     $('.js--header-search').on('click', function(){
@@ -148,6 +182,121 @@ $(document).ready(function() {
     // Открывашка сайд-меню на мобилке
     $('.js--aside-nav__show-nav').on('click', function(){
         $('.js--aside-nav').toggleClass('active');
+    });
+
+    // Переключатели в оформлении заказа
+    $('.js--formalization-delivery-switch').on('click', function(){
+        if($('.js--formalization-delivery-switch input').prop('checked')) {
+          $('.js--formalization-delivery').addClass('active');
+        } else {
+          $('.js--formalization-delivery').removeClass('active');
+        }
+    });
+
+
+    $('.js--formalization-storage-switch').on('click', function(){
+
+        if($('.js--formalization-storage-switch input').prop('checked')) {
+          $('.js--formalization-storage').addClass('active');
+
+          // Слайдер даты в оформлении заказа
+          $('.js--formalization-of-order-storage__slider').slick({
+            infinite: false,
+            slidesToShow: 16,
+            dots: false,
+            slidesToScroll: 1,
+            prevArrow: $('.js--formalization-of-order-storage__slider-prev'),
+            nextArrow: $('.js--formalization-of-order-storage__slider-next'),
+            responsive: [
+              {
+                breakpoint: 1281,
+                settings: {
+                  slidesToShow: 14
+                }
+              },
+              {
+                breakpoint: 1201,
+                settings: {
+                  slidesToShow: 12
+                }
+              },
+              // Виснет страница, если добавлять больше брейкпоинтов. Пока не нашёл решение
+              // {
+              //   breakpoint: 880,
+              //   settings: {
+              //     slidesToShow: 10
+              //   }
+              // },
+              // {
+              //   breakpoint: 780,
+              //   settings: {
+              //     slidesToShow: 8
+              //   }
+              // },
+            ]
+          });
+        } else {
+          $('.js--formalization-storage').removeClass('active');
+          $('.js--formalization-of-order-storage__slider').slick('unslick');
+        }
+    });
+
+    // MMenu
+    let $menu = $("#mobile-burger-menu").mmenu({
+        "navbars": [
+            {
+                "position": "top",
+                "content": [
+                    `<div class="mobile-menu__header">
+                        <a class="mobile-menu__logo" href="index.html">
+                            <img src="assets/img/logo.png" alt="Логотип ПТЖБ">
+                        </a>
+                        <a class="mobile-menu__header-close js--mobile-menu__header-close" href="javascript:;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg>
+                        </a>
+                    </div>`
+                ]
+            }
+        ],
+        "extensions": [
+            "fullscreen",
+            "position-front",
+            "position-top",
+            "border-full"
+        ],
+        "navbar": {
+          title: "Меню"
+        }
+    });
+
+
+    let $icon = $(".js--burger");
+    let API = $menu.data("mmenu");
+    $(document).on('click','.js--mobile-menu__header-close',function(){
+        API.close();
+    });
+
+    $icon.on("click", function () {
+        API.open();
+    });
+
+
+    API.bind("opened", function () {
+        setTimeout(function () {
+            $icon.addClass("is-active");
+        }, 10);
+        $icon.on("click", function () {
+            API.close();
+        });
+    });
+
+    API.bind("closed", function () {
+        setTimeout(function () {
+            $icon.removeClass("is-active");
+        }, 10);
+        $icon.on("click", function () {
+            API.open();
+        });
     });
 
     // Инициализация селектов

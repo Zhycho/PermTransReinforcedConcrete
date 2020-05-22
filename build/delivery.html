@@ -6,10 +6,11 @@
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
 		<title>ПермТрансЖелезоБетон</title>
 		<link rel="stylesheet" href="assets/css/bootstrap.css"><link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="assets/css/jquery.mmenu.all.css">
 		<link rel="stylesheet" href="assets/css/mainstyle.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<script src="assets/js/slick.min.js"></script><script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
-<script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+		<script src="assets/js/jquery.mmenu.all.min.js"></script><script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
 <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
 		<script src="assets/js/bootstrap.js"></script>
 		<script src="assets/js/common.js"></script>
@@ -31,19 +32,19 @@
 					<div class="header__mid-bottom">
 						<nav class="header__nav">
 							<ul>
-								<li><a href="">Компания</a></li>
-								<li><a href="">Продукция</a>
+								<li><a href="about.html">Компания</a></li>
+								<li><a href="catalog.html">Продукция</a>
 									<ul class="header__subnav">
 										<li><a href="">ЖБИ</a></li>
 										<li><a href="">Газоблок</a></li>
 									</ul>
 								</li>
-								<li><a href="">Акции</a></li>
+								<li><a href="stocks.html">Акции</a></li>
 								<li><a href="">Клиентам</a></li>
 								<li><a href="">Поставщикам</a></li>
-								<li><a href="">Карьера</a></li>
-								<li><a href="">Контакты</a></li>
-								<li><a href="">Блог</a></li>
+								<li><a href="vacancies.html">Карьера</a></li>
+								<li><a href="contacts.html">Контакты</a></li>
+								<li><a href="blog.html">Блог</a></li>
 							</ul>
 						</nav>
 					</div>
@@ -66,7 +67,7 @@
 						</form><a class="header__double-btn-text" href="">Скачать прайс лист</a>
 					</div>
 				</div>
-				<div class="header__burger"><a href=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18px" height="18px"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg></a></div>
+				<div class="header__burger"><a class="js--burger" href="javascript:;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18px" height="18px"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg></a></div>
 			</div>
 		</header>
 		<main>
@@ -184,6 +185,23 @@
 					</ul>
 				</address><script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A7e4a97dade22551bcc174575fa7d6a7cf8ffe4e45db623d0878c4320c318e632&amp;width=100%25&amp;height=540px&amp;lang=ru_RU&amp;scroll=false"></script>
 			</div>
+			<nav id="mobile-burger-menu">
+				<ul>
+					<li><a href="about.html">Компания</a></li>
+					<li><a href="catalog.html">Продукция</a>
+						<ul>
+							<li><a href="">ЖБИ</a></li>
+							<li><a href="">Газоблок</a></li>
+						</ul>
+					</li>
+					<li><a href="stocks.html">Акции</a></li>
+					<li><a href="">Клиентам</a></li>
+					<li><a href="">Поставщикам</a></li>
+					<li><a href="vacancies.html">Карьера</a></li>
+					<li><a href="contacts.html">Контакты</a></li>
+					<li><a href="blog.html">Блог</a></li>
+				</ul>
+			</nav>
 		</main>
 		<footer>
 			<div class="footer">

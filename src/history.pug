@@ -1,0 +1,48 @@
+doctype html
+html(lang="ru")
+    head
+        include ./templates/head/head.pug
+    body
+        header
+            include ./templates/header/header.pug
+        main
+            .container.history-headline
+                include ./templates/breadcrumb/breadcrumb.pug
+                h1.headline.headline_page История ПТЖБ
+            .history-slider-wrapper   
+                .history-slider.js--history-slider
+                    .history-slider-item
+                        .container
+                            .history-slider-img
+                                img(src="assets/img/history.jpg", alt="")
+                            .history-slider-content
+                                span.history-slider-item__year 2015
+                                h3.history-slider-item__headline Начало реконструкции производственных мощностей для увеличения объемов выпускаемой продукции 
+                                p.history-slider-item__description Реконструкция 2 пролета цеха формовочного производства позволяет увеличить производительность по выпуску плит дорожного настила, а также диверсифицировать производство по выпуску спектра плоскостных конструкций.
+                    .history-slider-item
+                        .container
+                            .history-slider-img
+                                img(src="assets/img/history.jpg", alt="")
+                            .history-slider-content
+                                span.history-slider-item__year 2015
+                                h3.history-slider-item__headline Начало реконструкции производственных мощностей для увеличения объемов выпускаемой продукции 
+                                p.history-slider-item__description Реконструкция 2 пролета цеха формовочного производства позволяет увеличить производительность по выпуску плит дорожного настила, а также диверсифицировать производство по выпуску спектра плоскостных конструкций.
+                .history-slider-nav
+                    a(href="javascript:;").js--history-slider__prev
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22px" height="17px">
+                            <path d="M4.248,9.407 C4.850,9.925 5.475,10.420 6.049,10.966 C7.118,11.983 8.144,13.044 9.216,14.058 C9.598,14.420 9.597,14.665 9.214,15.020 C7.801,16.331 8.267,16.300 6.962,15.032 C4.738,12.871 2.551,10.675 0.327,8.514 C-0.086,8.112 -0.117,7.853 0.315,7.433 C2.754,5.063 5.173,2.673 7.581,0.273 C7.951,-0.095 8.189,-0.089 8.563,0.273 C9.705,1.381 9.721,1.368 8.577,2.490 C7.171,3.871 5.763,5.248 4.342,6.639 C4.667,6.949 4.984,6.835 5.265,6.835 C10.381,6.843 15.496,6.838 20.611,6.848 C20.963,6.848 21.485,6.688 21.595,7.150 C21.731,7.717 21.795,8.355 21.539,8.902 C21.394,9.211 20.946,9.092 20.626,9.092 C15.537,9.097 10.447,9.096 5.357,9.096 C5.058,9.096 4.759,9.096 4.461,9.096 C4.390,9.199 4.319,9.303 4.248,9.407 Z"/>
+                        </svg>
+                    a(href="javascript:;").js--history-slider__next
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22px" height="16px">
+                            <path d="M17.752,6.593 C17.150,6.075 16.525,5.580 15.951,5.034 C14.882,4.017 13.856,2.956 12.784,1.942 C12.402,1.580 12.403,1.335 12.786,0.980 C14.199,-0.331 13.733,-0.300 15.038,0.968 C17.262,3.129 19.450,5.325 21.673,7.486 C22.086,7.888 22.117,8.147 21.685,8.567 C19.246,10.937 16.827,13.327 14.419,15.727 C14.049,16.095 13.811,16.089 13.437,15.727 C12.295,14.619 12.279,14.632 13.423,13.510 C14.829,12.129 16.237,10.752 17.658,9.361 C17.333,9.051 17.016,9.165 16.735,9.165 C11.619,9.157 6.504,9.162 1.389,9.152 C1.037,9.152 0.515,9.312 0.405,8.850 C0.269,8.283 0.205,7.645 0.461,7.098 C0.606,6.789 1.054,6.908 1.374,6.908 C6.463,6.903 11.553,6.904 16.643,6.904 C16.942,6.904 17.241,6.904 17.539,6.904 C17.610,6.801 17.681,6.697 17.752,6.593 Z"/>
+                        </svg>
+            .container
+                .history-timeline
+                    img(src="assets/img/history-timeline.png", alt="")
+                    ul.history-timeline__list
+                        li
+                            a(href="javascript:;")
+            include ./templates/contacts/contacts.pug
+            include ./templates/mmenu/mmenu.pug
+        footer
+            include ./templates/footer/footer.pug

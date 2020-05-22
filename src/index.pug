@@ -161,7 +161,7 @@ html(lang="ru")
                             textarea(name="", cols="30", rows="10" placeholder="Комментарий")
                             span.red-square
                         label.input-checkbox.big-form__input-checkbox
-                            input(type="checkbox", name="")
+                            input(type="checkbox", name="" required)
                             span Я согласен с политикой конфиденциальности и даю согласие на обработку моих персональных данных
                         input(type="submit", value="Отправить").btn.btn-primary.btn-lg
             .block
@@ -204,5 +204,6 @@ html(lang="ru")
                                     a(href="#") "Газоблок"
                             p.news-card__description Правильно, ни как, нужен строй материал способный выдержать не только свой вес но так же учитывать почву на которой стоит и ...
             include ./templates/contacts/contacts.pug
+            include ./templates/mmenu/mmenu.pug
         footer
             include ./templates/footer/footer.pug
