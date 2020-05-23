@@ -143,6 +143,17 @@ $(document).ready(function() {
         prevArrow: $('.js--history-slider__prev'),
         nextArrow: $('.js--history-slider__next'),
     });
+    $(".history-timeline__list-item").click(function(e){
+      e.preventDefault();
+
+      if(!$(this).hasClass('active')) {
+        $(this).siblings().removeClass('active');
+        $(this).addClass('active');
+      }
+
+      slideIndex = $(this).index();
+      $('.js--history-slider').slick('slickGoTo', parseInt(slideIndex));
+    });
 
     // counter
     function plusCounter(element){
@@ -167,6 +178,17 @@ $(document).ready(function() {
     $(document).on('click','.counter__less', function() {
         minusCounter(this);
         return false;
+    });
+
+    // Раскрывашки в вакансиях
+    $(".vacancies-list-item__detail").click(function(e){
+      if(!$(this).closest('.vacancies-list-item').hasClass('active')) {
+        $(this).closest('.vacancies-list-item').siblings().removeClass('active');
+        $(this).closest('.vacancies-list-item').addClass('active');
+      }
+    });
+    $(".vacancies-list-item__close a").click(function(e){
+      $(this).closest('.vacancies-list-item').removeClass('active');
     });
 
     // Поиск в хедере
