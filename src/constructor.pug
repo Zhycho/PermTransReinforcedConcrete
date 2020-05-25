@@ -6,9 +6,10 @@ html(lang="ru")
         header
             include ./templates/header/header.pug
         main
-            .container.container_page
+            .container.container_page#app
                 include ./templates/breadcrumb/breadcrumb.pug
                 h1.headline.headline_page.headline_constructor Калькулятор газобетона автоклавного твердения
+
                 .constructor-block.constructor-block_gray
                     .constructor-block__headline-wrapper
                         span.constructor-block__headline-number 01
@@ -23,28 +24,29 @@ html(lang="ru")
                                 label(for="type-block") Выберите тип блока:
                             div
                                 select(name="" )#type-block.js--select-search
-                                    option(value="") Блок | (600*300*188)
-                                    option(value="") Блок | (500*300*188)
-                                    option(value="") Блок | (400*300*188)
+                                    option(v-for="type in blockTypes" value="type") {{ type[0] }} ({{ type[1] }}*{{ type[2] }}*{{ type[3] }}) 
+                                    //- option(value="") Блок | (600*300*188)
+                                    //- option(value="") Блок | (500*300*188)
+                                    //- option(value="") Блок | (400*300*188)
                         li.constructor-block__input
                             div
                                 label(for="wall-length") Введите общую длину стен, м.:
                             div
-                                input(type="text" placeholder="18.00")#wall-length
+                                input(type="text" placeholder="18.00" v-bind:value="commonLong")#wall-length
                         li.constructor-block__input
                             div
                                 label(for="wall-height") Введите среднюю высоту стены, м.:
                             div
-                                input(type="text" placeholder="18.00")#wall-height
+                                input(type="text" placeholder="18.00" v-bind:value="averageHeight")#wall-height
                         li.constructor-block__input
                             div
                                 label(for="wall-square") Введите общую площадь проёмов, кв. м.:
                             div
-                                input(type="text" placeholder="4.00")#wall-square
+                                input(type="text" placeholder="4.00" v-bind:value="commonSquare")#wall-square
                     .constructor-block__button-wrapper
                         div
                         div
-                            a(href="javascript:;").btn.btn-primary.constructor-block__button Рассчитать
+                            a(href="javascript:;" v-on:click="calculate").btn.btn-primary.constructor-block__button Рассчитать
                 .constructor-block.constructor-block_white
                     .constructor-block__headline-wrapper
                         span.constructor-block__headline-number 02
@@ -54,12 +56,12 @@ html(lang="ru")
                             div
                                 label(for="") Вам потребуется, куб. м. газобетона
                             div
-                                input(type="text" placeholder="... куб. м. газобетона" disabled)
+                                input(type="text" placeholder="... куб. м. газобетона" v-bind:value="cubicMeters" disabled)
                         li.constructor-block__input
                             div
                                 label(for="") с учётом запаса 5% на подрезку, газобетонных блоков
                             div
-                                input(type="text" placeholder="... куб. м. газобетона" disabled)
+                                input(type="text" placeholder="... куб. м. газобетона" v-bind:value="cubicMetersReserve" disabled)
                     .constructor-block__headline-wrapper
                         span.constructor-block__headline-number 03
                         h2.constructor-block__headline Кратный поддонам расчёт
@@ -68,12 +70,12 @@ html(lang="ru")
                             div
                                 label(for="") Потребуется поддонов, шт.
                             div
-                                input(type="text" placeholder="... куб. м. газобетона" disabled)
+                                input(type="text" placeholder="... куб. м. газобетона" v-bind:value="pallets" disabled)
                         li.constructor-block__input
                             div
                                 label(for="") газобетонных блоков, шт.
                             div
-                                input(type="text" placeholder="... куб. м. газобетона" disabled)
+                                input(type="text" placeholder="... куб. м. газобетона" v-bind:value="amountOfBlocks" disabled)
                     .constructor-block__button-wrapper
                         div
                         div

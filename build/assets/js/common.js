@@ -1,4 +1,37 @@
 $(document).ready(function() {  
+    // vue
+
+    let blockTypes = [
+      ["БЛОК I","600","300","188","40"],
+      ["БЛОК I","600","400","188","30"],
+      ["БЛОК I","600","300","200","40"],
+      ["БЛОК I","600","400","200","30"],
+      ["БЛОК I","600","300","250","32"],
+      ["БЛОК I","600","400","250","24"],
+      ["БЛОК I","600","300","100","80"],
+      ["БЛОК I","600","600","200","20"]
+    ]
+    
+    var app = new Vue({
+      el: '#app',
+      data: {
+        blockTypes: blockTypes,
+        commonLong: 18.00,
+        averageHeight: 2.50,
+        commonSquare: 4.00,
+
+        cubicMeters: 0,
+        cubicMetersReserve: 0,
+        pallets: 0,
+        amountOfBlocks: 0
+      },
+      methods: {
+        calculate: function () {
+          // this.cubicMeters = this.commonLong + this.averageHeight;
+        }
+      }
+    })
+  
     // Слайдер акций на главной
     $('.js--main-stocks-slider').slick({
         infinite: false,

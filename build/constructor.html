@@ -12,7 +12,7 @@
 		<script src="assets/js/slick.min.js"></script><script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 		<script src="assets/js/jquery.mmenu.all.min.js"></script><script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
 <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
-		<script src="assets/js/bootstrap.js"></script>
+		<script src="assets/js/bootstrap.js"></script><script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 		<script src="assets/js/common.js"></script>
 	</head>
 	<body>
@@ -71,7 +71,7 @@
 			</div>
 		</header>
 		<main>
-			<div class="container container_page"><nav aria-label="breadcrumb">
+			<div class="container container_page" id="app"><nav aria-label="breadcrumb">
 <ol class="breadcrumb">
 <li class="breadcrumb-item"><a href="#">Главная</a></li>
 <li class="breadcrumb-item active" aria-current="page">Продукция</li>
@@ -95,9 +95,7 @@
 							</div>
 							<div>
 								<select class="js--select-search" name="" id="type-block">
-									<option value="">Блок | (600*300*188)</option>
-									<option value="">Блок | (500*300*188)</option>
-									<option value="">Блок | (400*300*188)</option>
+									<option v-for="type in blockTypes" value="type">{{ type[0] }} ({{ type[1] }}*{{ type[2] }}*{{ type[3] }}) </option>
 								</select>
 							</div>
 						</li>
@@ -106,7 +104,7 @@
 								<label for="wall-length">Введите общую длину стен, м.:</label>
 							</div>
 							<div>
-								<input type="text" placeholder="18.00" id="wall-length">
+								<input type="text" placeholder="18.00" v-bind:value="commonLong" id="wall-length">
 							</div>
 						</li>
 						<li class="constructor-block__input">
@@ -114,7 +112,7 @@
 								<label for="wall-height">Введите среднюю высоту стены, м.:</label>
 							</div>
 							<div>
-								<input type="text" placeholder="18.00" id="wall-height">
+								<input type="text" placeholder="18.00" v-bind:value="averageHeight" id="wall-height">
 							</div>
 						</li>
 						<li class="constructor-block__input">
@@ -122,13 +120,13 @@
 								<label for="wall-square">Введите общую площадь проёмов, кв. м.:</label>
 							</div>
 							<div>
-								<input type="text" placeholder="4.00" id="wall-square">
+								<input type="text" placeholder="4.00" v-bind:value="commonSquare" id="wall-square">
 							</div>
 						</li>
 					</ul>
 					<div class="constructor-block__button-wrapper">
 						<div></div>
-						<div><a class="btn btn-primary constructor-block__button" href="javascript:;">Рассчитать</a></div>
+						<div><a class="btn btn-primary constructor-block__button" href="javascript:;" v-on:click="calculate">Рассчитать</a></div>
 					</div>
 				</div>
 				<div class="constructor-block constructor-block_white">
@@ -141,7 +139,7 @@
 								<label for="">Вам потребуется, куб. м. газобетона</label>
 							</div>
 							<div>
-								<input type="text" placeholder="... куб. м. газобетона" disabled>
+								<input type="text" placeholder="... куб. м. газобетона" v-bind:value="cubicMeters" disabled>
 							</div>
 						</li>
 						<li class="constructor-block__input">
@@ -149,7 +147,7 @@
 								<label for="">с учётом запаса 5% на подрезку, газобетонных блоков</label>
 							</div>
 							<div>
-								<input type="text" placeholder="... куб. м. газобетона" disabled>
+								<input type="text" placeholder="... куб. м. газобетона" v-bind:value="cubicMetersReserve" disabled>
 							</div>
 						</li>
 					</ul>
@@ -162,7 +160,7 @@
 								<label for="">Потребуется поддонов, шт.</label>
 							</div>
 							<div>
-								<input type="text" placeholder="... куб. м. газобетона" disabled>
+								<input type="text" placeholder="... куб. м. газобетона" v-bind:value="pallets" disabled>
 							</div>
 						</li>
 						<li class="constructor-block__input">
@@ -170,7 +168,7 @@
 								<label for="">газобетонных блоков, шт.</label>
 							</div>
 							<div>
-								<input type="text" placeholder="... куб. м. газобетона" disabled>
+								<input type="text" placeholder="... куб. м. газобетона" v-bind:value="amountOfBlocks" disabled>
 							</div>
 						</li>
 					</ul>
