@@ -1,6 +1,6 @@
 $(document).ready(function() {  
-    // vue
-
+    
+    // Калькулятор-конструктор
     let blockTypes = [
       ["БЛОК I","600","300","188","40"],
       ["БЛОК I","600","400","188","30"],
@@ -12,22 +12,109 @@ $(document).ready(function() {
       ["БЛОК I","600","600","200","20"]
     ]
     
-    var app = new Vue({
-      el: '#app',
+    let constructor = new Vue({
+      el: '#constructor',
       data: {
-        blockTypes: blockTypes,
-        commonLong: 18.00,
-        averageHeight: 2.50,
-        commonSquare: 4.00,
+        selected: 0,
 
-        cubicMeters: 0,
-        cubicMetersReserve: 0,
-        pallets: 0,
-        amountOfBlocks: 0
+        blockTypes: blockTypes,
+        commonLong: '18',
+        averageHeight: '2.5',
+        commonSquare: '4.0',
+
+        cubicMeters: '',
+        cubicMetersReserve: '',
+        pallets: '',
+        amountOfBlocks: ''
       },
       methods: {
         calculate: function () {
-          // this.cubicMeters = this.commonLong + this.averageHeight;
+          let correctlyFilled = true;
+
+          // Проверяем поля на правильность заполнения
+          if (isNaN(parseFloat(this.commonLong))){ // Длина
+              this.commonLong = "0.00";
+          } else {
+              this.commonLong = parseFloat(this.commonLong);
+          };
+          if (isNaN(parseFloat(this.averageHeight))){ // Высота
+              this.averageHeight = "0.00";
+          } else {
+              this.averageHeight = parseFloat(this.averageHeight);
+          };
+          if (isNaN(parseFloat(this.commonSquare))){ // Площадь
+              this.commonSquare = "0.00";
+          } else {
+              this.commonSquare = parseFloat(this.commonSquare);
+          };
+
+          if (this.commonLong == "0.00" || this.commonLong == "") {
+            alert("Введите общую длину стен.");
+            correctlyFilled = false;
+          }
+          if (this.averageHeight == "0.00" || this.averageHeight == "") {
+            alert("Введите среднюю высоту стены.");
+            correctlyFilled = false;
+          }
+
+          // Если всё заполненно верно
+          if (correctlyFilled) {  
+            // Получаем значения выбранного типа блока
+            var bx = this.blockTypes[this.selected][1];
+            var by = this.blockTypes[this.selected][3];
+            var bz = this.blockTypes[this.selected][2];
+            var b  = this.blockTypes[this.selected][4]; // Количество на поддоне
+
+            var x = parseFloat(this.commonLong); // Длина
+            var y = parseFloat(this.averageHeight); // Высота
+            var z = parseFloat(this.commonSquare); // Площадь
+
+            if (x == 0) {
+              correctlyFilled = false;
+              alert("Введите общую длину стен.");
+            };
+
+            if (y == 0) {
+              correctlyFilled = false;
+              alert("Введите среднюю высоту стены.");
+            };
+          }
+
+          // Проверяем больше ли площадь проёмоы площади стен
+          if (correctlyFilled) {
+            var v1 = x * y * bz / 1000;
+            var v2 = z * bz / 1000;
+    
+            if (v2 >= v1) {
+                correctlyFilled = false;
+                alert("Площадь проёмов не должна быть больше площади стен.");
+            };
+          };
+
+          // Если всё в порядке - выводим расчёты
+          if (correctlyFilled) {
+            function round_float(x,n){
+              if(!parseInt(n))
+                  var n = 0;
+              if(!parseFloat(x))
+                  return false;
+              return Math.round(x*Math.pow(10,n))/Math.pow(10,n);
+            };
+
+            var r2 = round_float((v1-v2)*1.05,2);
+            this.cubicMeters = r2;
+
+            var bv = bx * by * bz / 1000000000;
+            var r3 = round_float(r2 / bv, 1);
+            this.cubicMetersReserve = r3;
+
+            var r4 = Math.round(r3 / b);
+            if(r4 < (r3 / b)) {
+              r4++;
+            };
+            this.pallets = r4;
+            this.amountOfBlocks = r4 * b;
+          };
         }
       }
     })

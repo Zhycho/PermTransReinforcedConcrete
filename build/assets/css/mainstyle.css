@@ -1484,8 +1484,12 @@
   color: #d7d7d7;
 }
 .constructor-block.constructor-block_gray .constructor-block__input div:nth-of-type(2) select {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
   border-color: #FFF;
   color: #FFF;
+  cursor: pointer;
 }
 .constructor-block.constructor-block_gray .constructor-block__input div:nth-of-type(2) select option {
   color: #28272d;
