@@ -71,9 +71,9 @@ html(lang="ru")
                                     span Кол-во
                                 .delivery-form__chose-products
                                     div
-                                        label.input-select
-                                            select(name="")
-                                                option Название продукции
+                                        label.input-select.delivery-form__input-select
+                                            select(name="").js--select-search
+                                                option(disabled selected) Название продукции
                                                 option(value="Вариант 1") Вариант 1
                                                 option(value="Вариант 2") Вариант 2
                                                 option(value="Вариант 3") Вариант 3
@@ -86,7 +86,7 @@ html(lang="ru")
                                     input(type="checkbox", name="")
                                     span Я согласен с политикой конфиденциальности и даю согласие на обработку моих персональных данных
                                 input(type="submit", value="Отправить заявку").btn.btn-primary.btn-lg.delivery-form__submit
-
+                                
 
                         
             include ./templates/contacts/contacts.pug

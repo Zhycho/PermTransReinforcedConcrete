@@ -640,10 +640,6 @@
     }
 }
 
-.delivery-form {
-
-}
-
 .delivery-form__submit {
 
     @media (max-width: 480px) {
@@ -762,6 +758,31 @@
         .delivery-form__chose-products:last-of-type {
             margin-bottom: 20px;
         }
+    }
+}
+
+.delivery-form__input-select {
+
+    .select2-container--default .select2-selection--single {
+        background-color: #fff;
+        border: 1px solid #28272d;
+        border-radius: 0;
+        font-size: 0.875rem;
+        font-weight: 400;
+        height: 45px;
+        padding: 8px 16px;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    .select2-container--default .select2-selection--single .select2-selection__rendered {
+        padding: 0;
+    }
+
+    .select2-container--default .select2-selection--single .select2-selection__arrow {
+        display: none;
     }
 }
 

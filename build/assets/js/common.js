@@ -18,9 +18,9 @@ $(document).ready(function() {
         selected: 0,
 
         blockTypes: blockTypes,
-        commonLong: '',
-        averageHeight: '',
-        commonSquare: '',
+        commonLong: '18',
+        averageHeight: '2.5',
+        commonSquare: '4.0',
 
         cubicMeters: '',
         cubicMetersReserve: '',
@@ -446,4 +446,18 @@ $(document).ready(function() {
 
     // Инициализация тултипов в продукте
     tippy('[data-tippy-content]');
+
+    // Кнопка наверх
+    var btn = $('.js--to-up');  
+    $(window).scroll(function() {     
+      if ($(window).scrollTop() > 300) {
+        btn.addClass('show');
+      } else {
+        btn.removeClass('show');
+      }
+    });
+    btn.on('click', function(e) {
+      e.preventDefault();
+      $('html, body').animate({scrollTop:0}, '300');
+    });
 });

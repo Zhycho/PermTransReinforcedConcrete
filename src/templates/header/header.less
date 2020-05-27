@@ -513,7 +513,7 @@ header {
 .header__burger {
     display: none;
     position: fixed;
-    right: 20px;
+    right: 16px;
     top: 40px;
     z-index: 100;
 
@@ -552,3 +552,106 @@ header {
     }
 }
 
+// Иконки корзины и назад
+
+a.to-delivery {
+    align-items: center;
+    background-color: #bf272e;
+    border: 2px solid #bf272e;
+    display: flex;
+    fill: #FFF;
+    justify-content: center;
+    height: 42px;
+    padding-right: 2px;
+    position: fixed;
+    right: calc(50% - 625px);
+    top: 50%;
+    transform: translateY(-50%);
+    transition: all 0.2s ease-in-out;
+    width: 42px;
+    z-index: 5;
+
+    span {
+        align-items: center;
+        background-color: #FFF;
+        border-radius: 50%;
+        height: 18px;
+        display: flex;
+        font-size: 0.75rem;
+        justify-content: center;
+        position: absolute;
+        top: -4px;
+        width: 18px;
+        right: -4px;
+    }
+
+    &:hover {
+        background-color: #FFF;
+        fill: #bf272e;
+    }
+
+    @media (max-width: 1280px) {
+        right: 15px;
+    }
+
+    @media (max-width: 480px) {
+        background-color: #FFF;
+        fill: #bf272e;
+        position: relative;
+        right: 0;
+        transform: none;
+        top: 0;
+
+        &:hover {
+            background-color: #bf272e;
+            fill: #FFF;
+        }
+
+        span {
+            background-color: #bf272e;
+            color: #FFF;
+        }
+    }
+
+    svg {
+        transform: scale(1);
+    }
+}
+
+.to-up {
+    align-items: center;
+    background-color: #bf272e;
+    border: 2px solid #bf272e;
+    display: flex;
+    fill: #FFF;
+    justify-content: center;
+    height: 42px;
+    opacity: 0;
+    position: fixed;
+    right: calc(50% - 625px);
+    top: calc(50% + 58px);
+    transform: translateY(-50%);
+    transition: all 0.2s ease-in-out;
+    visibility: hidden;
+    width: 42px;
+    z-index: 5;
+
+    &:hover {
+        background-color: #FFF;
+        fill: #bf272e;
+    }
+
+    &.show {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    @media (max-width: 1280px) {
+        right: 15px;
+    }
+
+    @media (max-width: 480px) {
+        bottom: 10%;
+        top: auto;
+    } 
+}
