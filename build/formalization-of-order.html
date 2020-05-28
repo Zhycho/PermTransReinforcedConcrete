@@ -12,6 +12,7 @@
 		<script src="assets/js/slick.min.js"></script><script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 		<script src="assets/js/jquery.mmenu.all.min.js"></script><script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
 <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
+<script src="https://api-maps.yandex.ru/2.1/?apikey=ead32450-79ed-44fd-ae24-07b7bca18fda&lang=ru_RU" type="text/javascript"></script>
 		<script src="assets/js/bootstrap.js"></script><script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 		<script src="assets/js/common.js"></script>
 	</head>
@@ -192,7 +193,7 @@
 							</div>
 						</div>
 					</fieldset>
-					<fieldset class="formalization-of-order-item js--formalization-delivery formalization-delivery">
+					<fieldset class="formalization-of-order-item js--formalization-delivery formalization-delivery active">
 						<h2 class="formalization-of-order__subheadline">Доставка</h2>
 						<div class="formalization-of-order-delivery">
 							<div>
@@ -208,16 +209,13 @@
 						<div class="formalization-of-order-choose-city">
 							<div class="formalization-of-order-choose-city-headline">
 								<div>
-									<select class="js--select-search">
+									<select class="js--select-search js--select-city">
 										<option value="" disabled>Выберите ваш город из списка или введите в поиске</option>
-										<option value="">Пермь</option>
-										<option value="">Москва</option>
-										<option value="">Санкт-петерубрг</option>
 									</select>
 								</div>
 								<div><span>Или выберите город на карте</span></div>
 							</div>
-							<div class="formalization-of-order-choose-city-map"><script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A7e4a97dade22551bcc174575fa7d6a7cf8ffe4e45db623d0878c4320c318e632&amp;width=100%25&amp;height=540px&amp;lang=ru_RU&amp;scroll=false"></script></div>
+							<div class="formalization-of-order-choose-city-map" id="js--formalization-map"></div>
 						</div>
 					</fieldset>
 					<fieldset class="formalization-of-order-item js--formalization-storage formalization-storage">
