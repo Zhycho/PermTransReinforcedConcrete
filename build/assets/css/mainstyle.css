@@ -2497,6 +2497,12 @@
     height: 60px;
   }
 }
+.formalization-of-order-payment__description-list > li {
+  display: none;
+}
+.formalization-of-order-payment__description-list > li.active {
+  display: block;
+}
 .formalization-of-order-payment__headline {
   align-items: center;
   background-color: #28272d;

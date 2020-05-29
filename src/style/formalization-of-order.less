@@ -534,10 +534,6 @@
     }
 }
 
-.formalization-of-order-payment-list {
-
-}
-
 .formalization-of-order-payment-list__item {
     margin-bottom: 2px;
 
@@ -592,6 +588,17 @@
             span {
                 height: 60px;
             }
+        }
+    }
+}
+
+.formalization-of-order-payment__description-list {
+
+    & > li {
+        display: none;
+
+        &.active {
+            display: block;
         }
     }
 }
@@ -652,10 +659,6 @@
     @media (max-width: 768px) {
         margin-bottom: 16px;
     }
-}
-
-.formalization-of-order__input-submit {
-
 }
 
 .formalization-delivery.active {

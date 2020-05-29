@@ -142,7 +142,7 @@ html(lang="ru")
                                 label.textarea-default.formalization-of-order-data__textarea-default
                                     textarea(name="", cols="30", rows="10" placeholder="Комментарий")
                                     span.red-square
-                    fieldset.formalization-of-order-item.js--formalization-delivery.formalization-delivery.active
+                    fieldset.formalization-of-order-item.js--formalization-delivery.formalization-delivery
                         h2.formalization-of-order__subheadline Доставка
                         .formalization-of-order-delivery
                             div
@@ -161,15 +161,12 @@ html(lang="ru")
                         .formalization-of-order-choose-city
                             .formalization-of-order-choose-city-headline
                                 div
+                                    //- .js--select-search
                                     select.js--select-search.js--select-city
                                         option(value="" disabled) Выберите ваш город из списка или введите в поиске
-                                        //- option(value="") Пермь
-                                        //- option(value="") Москва
-                                        //- option(value="") Санкт-петерубрг
                                 div
                                     span Или выберите город на карте
                             .formalization-of-order-choose-city-map#js--formalization-map
-                                //- <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A7e4a97dade22551bcc174575fa7d6a7cf8ffe4e45db623d0878c4320c318e632&amp;width=100%25&amp;height=540px&amp;lang=ru_RU&amp;scroll=false"></script>
                     fieldset.formalization-of-order-item.js--formalization-storage.formalization-storage
                         h2.formalization-of-order__subheadline Бесплатное хранение
                         .formalization-of-order-storage
@@ -297,7 +294,7 @@ html(lang="ru")
                         .formalization-of-order-payment
                             div
                                 ul.formalization-of-order-payment-list
-                                    li.formalization-of-order-payment-list__item
+                                    li.formalization-of-order-payment-list__item.active
                                         label
                                             input(type="radio", name="payment" checked)
                                             span Онлайн
@@ -340,18 +337,40 @@ html(lang="ru")
                                                 <path fill-rule="evenodd"  fill="rgb(236, 63, 71)" d="M24.000,2.952 C23.976,3.556 23.741,4.207 23.243,4.753 C20.317,7.967 17.395,11.182 14.470,14.395 C12.840,16.186 11.201,17.969 9.580,19.769 C9.334,20.042 9.178,20.104 8.894,19.810 C6.212,17.032 3.503,14.281 0.832,11.492 C-0.688,9.904 -0.066,7.342 1.951,6.758 C3.024,6.447 3.957,6.749 4.739,7.547 C6.059,8.896 7.380,10.244 8.679,11.615 C9.000,11.954 9.181,11.968 9.507,11.608 C12.724,8.056 15.954,4.516 19.193,0.986 C20.300,-0.221 21.848,-0.332 23.016,0.664 C23.627,1.184 24.002,2.004 24.000,2.952 Z"/>
                                             </svg>
                             div
-                                .formalization-of-order-payment__headline
-                                    span Принимаемые к оплате карты:
-                                ul.formalization-of-order-payment-type
-                                    li.formalization-of-order-payment-type__item
-                                        img(src="assets/img/payment_visa.png", alt="")
-                                    li.formalization-of-order-payment-type__item
-                                        img(src="assets/img/payment_visa.png", alt="")
-                                    li.formalization-of-order-payment-type__item
-                                        img(src="assets/img/payment_visa.png", alt="")
-                                .formalization-of-order-payment__description
-                                    p По результатам обработки заказ вам на указанную почту будет выслан электронный счет, в виде ссылки, перейдя по которой вы сможете оплатить ваш заказ. 
-                                    p *Предварительно будет звонок от менеджера, для согласования стоимости доставки.
+                                ul.formalization-of-order-payment__description-list
+                                    li.active
+                                        .formalization-of-order-payment__headline
+                                            span Принимаемые к оплате карты:
+                                        ul.formalization-of-order-payment-type
+                                            li.formalization-of-order-payment-type__item
+                                                img(src="assets/img/payment_visa.png", alt="")
+                                            li.formalization-of-order-payment-type__item
+                                                img(src="assets/img/payment_visa.png", alt="")
+                                            li.formalization-of-order-payment-type__item
+                                                img(src="assets/img/payment_visa.png", alt="")
+                                        .formalization-of-order-payment__description
+                                            p По результатам обработки заказ вам на указанную почту будет выслан электронный счет, в виде ссылки, перейдя по которой вы сможете оплатить ваш заказ. 
+                                            p *Предварительно будет звонок от менеджера, для согласования стоимости доставки.
+                                    li
+                                        .formalization-of-order-payment__description
+                                            p Описание по счёту
+                                            p *Предварительно будет звонок от менеджера, для согласования стоимости доставки.
+                                    li
+                                        .formalization-of-order-payment__description
+                                            p В офисе
+                                            p *Предварительно будет звонок от менеджера, для согласования стоимости доставки.
+                                    li
+                                        .formalization-of-order-payment__description
+                                            p На заводе
+                                            p *Предварительно будет звонок от менеджера, для согласования стоимости доставки.
+                                    li
+                                        .formalization-of-order-payment__description
+                                            p В рассрочку
+                                            p *Предварительно будет звонок от менеджера, для согласования стоимости доставки.
+                                    li
+                                        .formalization-of-order-payment__description
+                                            p В кредит
+                                            p *Предварительно будет звонок от менеджера, для согласования стоимости доставки.
                     label.input-checkbox.formalization-of-order__input-checkbox
                         input(type="checkbox", name="" required)
                         span Я согласен с политикой конфиденциальности и даю согласие на обработку моих персональных данных

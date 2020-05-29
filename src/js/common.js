@@ -461,22 +461,27 @@ $(document).ready(function() {
       $('html, body').animate({scrollTop:0}, '300');
     });
 
-    // Яндекс карта в оформлении заказа
+    // Табы способов оплаты
+    $('.formalization-of-order-payment-list__item').on('click', function() {
+      $(this)
+        .addClass('active').siblings().removeClass('active')
+        .closest('.formalization-of-order-payment').find('.formalization-of-order-payment__description-list > li').removeClass('active').eq($(this).index()).addClass('active');
+    });
 
+
+
+    // Яндекс карта в оформлении заказа
     let cityList = [
         {
             name: "Пермь",
-            style: "islands#redIcon",
             center: [58.021437, 56.250672]
         },
         {
             name: "Москва",
-            style: "islands#redIcon",
             center: [55.777756, 37.625222]
         },
         {
             name: "Санкт-Петербург",
-            style: "islands#redIcon",
             center: [59.928058, 30.360105]
         },
     ]
@@ -495,8 +500,8 @@ $(document).ready(function() {
           searchControlProvider: 'yandex#search'
         }),
         
+        
         selectOfCity = $('.js--select-city');
-
         collection = new ymaps.GeoObjectCollection();
 
         for (var i = 0, l = cityList.length; i < l; i++) {
@@ -504,7 +509,8 @@ $(document).ready(function() {
         }
 
         function createCity(city) {
-                var selectItem = new Option(city.name, city.name);
+                // var selectItem = new Option(city.name, city.name);
+                var selectItem = $(`<option value=${city.name}>` + city.name + '</option>');
                 
                 placemark = new ymaps.Placemark(city.center, {
                     // Контент балуна
@@ -516,7 +522,7 @@ $(document).ready(function() {
                     // Размеры изображения иконки
                     iconImageSize: [23, 30],  
                     // смещение картинки
-                    iconImageOffset: [0, 0],
+                    iconImageOffset: [-13, -30],
                     // Не скрывать метку 
                     hideIconOnBalloonOpen: false,
                     // Не отображать на мобильном как панель
@@ -524,52 +530,37 @@ $(document).ready(function() {
                 });
 
                 collection.add(placemark);
-                selectOfCity.append(selectItem);
 
-                // selectItem.on('click', function () {
-                //   // Открываем/закрываем баллун у метки.
-                //   if (placemark.balloon.isOpen()) {
-                //   placemark.balloon.close();
-                //   } else {
-                //   // Плавно меняем центр карты на координаты метки.
-                //   myMap.panTo(placemark.geometry.getCoordinates(), {
-                //   delay: 0,
-                //   callback: function () {
-                //   placemark.balloon.open();
-                //   }
-                // });
+                // По клику на метку меняем город в селекте
+                placemark.events.add('click', function () {
+                    selectOfCity.find('option').removeAttr('selected');
+                    selectOfCity.find('option').eq(cityList.indexOf(city) + 1).attr('selected','selected');
+                    
+                    // Смена для отображения в select2
+                    selectOfCity.closest('.formalization-of-order-choose-city-headline').find('.select2-selection__rendered').attr('title', city.name).text(city.name);
+                });
+
+                // Добавляет город в селект и делает перемещение на карте по клику, но второе не работает
+                selectItem.appendTo(selectOfCity).on('click', function () {
+                    // Открываем/закрываем баллун у метки.
+                    if(placemark.balloon.isOpen()) {
+                        placemark.balloon.close();
+                    }
+                    else {
+                        // Плавно меняем центр карты на координаты метки.
+                        myMap.panTo(placemark.geometry.getCoordinates(), {
+                            delay: 0,
+                            callback: function () {
+                                placemark.balloon.open();
+                            }
+                        });
+                    }
+                });
         }
 
         myMap.geoObjects.add(collection);
-
-        // Добавляет города на картку и в select, но не связывает их между собой
-        // for (var i = 0, l = cityList.length; i < l; i++) {
-        //     createCity(cityList[i]);
-        // }
-
-        // function createCity(city) {
-        //         var selectItem = new Option(city.name, city.name);
-                
-        //         placemark = new ymaps.Placemark(city.center, {
-        //             // Контент балуна
-        //             balloonContent: ''
-        //         }, {
-        //             // Изображение иконки метки
-        //             iconLayout: 'default#image',
-        //             iconImageHref: '/assets/img/about-map-label.png',
-        //             // Размеры изображения иконки
-        //             iconImageSize: [23, 30],  
-        //             // смещение картинки
-        //             iconImageOffset: [0, 0],
-        //             // Не скрывать метку 
-        //             hideIconOnBalloonOpen: false,
-        //             // Не отображать на мобильном как панель
-        //             balloonPanelMaxMapArea: 0
-        //         });
-                
-        //         myMap.geoObjects.add(placemark)
-
-        //         selectOfCity.append(selectItem);
-        // }
+        myMap.behaviors.disable('scrollZoom'); 
     }
 });
+
+
